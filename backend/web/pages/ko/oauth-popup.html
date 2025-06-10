@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <title>디스코드 인증 완료</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- ✅ 스타일 정의: 배경, 박스, 반응형 등 -->
+    <link rel="stylesheet" href="/static/css/oauth-popup.css"/>
+    <!-- 📜 부모 창에 인증 성공 메시지 전송 및 자동 종료 -->
+    <script src="/static/js/oauth-popup.js"></script>
+    <script type="text/javascript">
+        // 부모 창에 인증 완료 메시지 전송
+        window.onload = function () {
+            handleDiscordAuthSuccess("<p>이 페이지는 인증 완료 후 자동으로 닫힙니다.<br> 만일 닫히지 않을 경우 직접 창을 닫아주세요.</p>");
+        };
+    </script>
+</head>
+
+<body>
+
+<!-- ✅ 인증 완료 메시지 UI -->
+<div class="message-box">
+    <h1>디스코드 인증 완료</h1>
+    <p>잠시 후 창이 자동으로 닫힙니다...</p>
+</div>
+<script src="/static/js/lang.js"></script>
+</body>
+</html>

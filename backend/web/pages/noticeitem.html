@@ -1,0 +1,6 @@
+{% for n in notifications %}
+<li>
+    <h3>{{ n.title }} <small>{{ n.created_at }}</small></h3>
+    <p>{{ n.content }}</p>
+</li>
+{% endfor %}

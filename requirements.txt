@@ -1,0 +1,17 @@
+aiohttp==3.11.14
+aiomysql==0.2.0
+alembic==1.15.2
+cryptography==44.0.2
+discord-py-interactions==5.14.0
+fastapi==0.115.12
+Jinja2==3.1.6
+mysqlclient==2.2.7
+pydantic==2.11.1
+PyMySQL==1.1.1
+requests==2.32.3
+SQLAlchemy[asyncio]==2.0.40
+uvicorn==0.34.0
+dotenv==0.9.9
+cachetools==5.5.2
+llm_axe==1.1.9
+PyGithub==2.6.1

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Community</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="/static/css/common.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body>
+<header>
+    <i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+    <h1>Community</h1>
+    <i class="fas fa-user-shield admin-icon" onclick="document.getElementById('admin-modal').style.display='flex'"></i>
+    <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
+</header>
+<div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+
+<div class="admin-modal" id="admin-modal"
+     style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 9999;">
+    <div id="admin-modal-content"
+         style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 300px;">
+        <p style="margin-bottom: 10px;">
+            Enter admin token
+        </p>
+        <input id="admin-pass" placeholder="Enter token" style="width: 100%; padding: 10px; margin-bottom: 10px;"
+               type="password"/>
+        <button onclick="verifyAdmin()"
+                style="width: 100%; padding: 10px; background: #5865F2; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem;">
+            Confirm
+        </button>
+    </div>
+</div>
+
+<div class="content-grid">
+    <section class="section">
+        <h2>Notices</h2>
+        <ul class="notice" hx-get="/api/web/notification" hx-swap="innerHTML" hx-trigger="load" id="notice-list">
+            <div style="max-width: 100%; display: flex; justify-content: center; align-items: center; height: 100%; margin: auto;">
+                <div class="loader"></div>
+            </div>
+        </ul>
+        <div class="admin-controls" id="admin-controls" style="display:none">
+            <input id="notice-title" placeholder="Notice Title"/>
+            <textarea id="notice-body" placeholder="Notice Content"></textarea>
+            <button onclick="postNotice()">Post Notice</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>FAQ</h2>
+        <ul class="faq" id="faq-list">
+            <li class="answered" data-answer="Users must create their own Notion Integration and generate the token to link Notion.">
+                <h3>How do I link Notion? <small>2025-05-28</small></h3>
+                <p>How do I connect my personal Notion workspace?</p>
+                <span class="answer-status">[Answered]</span>
+                <div class="faq-answer" style="display: none; margin-top: 8px; color: #333;"></div>
+            </li>
+            <li class="answered" data-answer="Use the official invite link from the README and set admin role with '/settings set admin-role' command.">
+                <h3>How do I invite the bot? <small>2025-05-28</small></h3>
+                <p>How do I invite Notipy bot to my server?</p>
+                <span class="answer-status">[Answered]</span>
+                <div class="faq-answer" style="display: none; margin-top: 8px; color: #333;"></div>
+            </li>
+            <li class="answered" data-answer="Supports commands like '/notion set token', '/notion connect database', '/ticket create'. See README for full list.">
+                <h3>What commands can I use? <small>2025-05-28</small></h3>
+                <p>What slash commands are available?</p>
+                <span class="answer-status">[Answered]</span>
+                <div class="faq-answer" style="display: none; margin-top: 8px; color: #333;"></div>
+            </li>
+            <li class="answered" data-answer="Join the Discord support server or DM the bot directly for help.">
+                <h3>Where can I get help or ask questions? <small>2025-05-28</small></h3>
+                <p>Where can I ask for support?</p>
+                <span class="answer-status">[Answered]</span>
+                <div class="faq-answer" style="display: none; margin-top: 8px; color: #333;"></div>
+            </li>
+            <li class="answered" data-answer="Yes, source code is available on https://github.com/macqueen0987/notipy.">
+                <h3>Is this project open source? <small>2025-05-28</small></h3>
+                <p>Can I view the source code on GitHub?</p>
+                <span class="answer-status">[Answered]</span>
+                <div class="faq-answer" style="display: none; margin-top: 8px; color: #333;"></div>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <p>© 2025 Notipy. Open-sourced under the Apache License 2.0.</p>
+</footer>
+
+<script src="/static/js/script.js"></script>
+<script src="/static/js/admin.js"></script>
+<script src="/static/js/lang.js"></script>
+</body>
+</html>

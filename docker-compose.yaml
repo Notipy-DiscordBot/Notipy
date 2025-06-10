@@ -1,0 +1,86 @@
+# the networks should be created before the services
+# enter the command `docker network create NETWORKNAME` to create the network, same for the other networks
+
+services:
+    proxy:
+        # you don't need proxy if you don't have one or more web services
+        container_name: proxy
+        image: nginx:latest
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        networks:
+            - nginx-proxy
+
+    discordbot:
+        container_name: notipy-discordbot
+        image: notipy
+        restart: unless-stopped
+        volumes:
+            - ./discordbot:/discordbot
+        working_dir: /discordbot
+        env_file: var.env
+        environment:
+            - DEBUG=0 # set to 1 to enable debug mode
+        expose:
+            - 9090
+        command:
+            - python
+            - main.py
+        networks:
+            - nginx-proxy
+
+    backend:
+        container_name: notipy-backend # change this -> change discordbot/commons var.py
+        image: notipy
+        restart: unless-stopped
+        env_file: var.env
+        expose:
+            - 9091
+        volumes:
+            - ./backend:/backend
+        working_dir: /backend
+        command:
+            - python
+            - main.py
+        networks:
+            - nginx-proxy
+            - notipy_backend
+
+    database:
+        container_name: notipy-database # change this -> change backend var.py
+        image: mysql:latest
+        restart: unless-stopped
+        env_file: var.env
+        expose:
+            - 3306
+        volumes:
+            - ./database:/var/lib/mysql
+        networks:
+            - notipy_backend
+        command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--lower_case_table_names=1']
+        # this is to make sure the database is utf8mb4, you can use without this, but some letters can break
+
+    ollama:
+        container_name: ollama
+        image: ollama/ollama
+        restart: unless-stopped
+        expose:
+            - 11434  # 내부 서비스용
+        networks:
+            - notipy_backend
+        volumes:
+            - ./ollama_data:/root/.ollama
+        entrypoint: [ "/bin/bash", "-c" ]
+        command: >
+            "ollama serve & sleep 5 && ollama run llama3:instruct && tail -f /dev/null"
+
+
+networks:
+    nginx-proxy:
+        external: true
+    notipy_backend:
+        external: true

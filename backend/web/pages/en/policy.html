@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Terms and Privacy Policy</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="/static/css/common.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body>
+<header>
+    <i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+    <h1>Terms and Privacy Policy</h1>
+    <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
+</header>
+<div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+<p style="text-align: center;">
+    For other languages, check the
+    <a href="https://github.com/macqueen0987/NotiPy/blob/master/docs/en/terms-policy.md">GitHub page</a>.
+</p>
+<div class="buttons">
+    <button onclick="showContent('terms', this)">Terms of Service</button>
+    <button onclick="showContent('privacy', this)">Privacy Policy</button>
+</div>
+<div class="wrapper">
+    <div class="content-box" id="terms">
+        <h2>Article 1 (Purpose)</h2>
+        <p>This service connects collaboration platforms such as Notion, GitHub and Discord to streamline communication.
+            It is non-commercial and may not be used to infringe on the rights of others or violate the terms of those
+            APIs.</p>
+        <h2>Article 2 (Service Content)</h2>
+        <ul>
+            <li>Automatically create a Discord forum thread when a Notion page is created.</li>
+            <li>Send automatic notifications to Discord when a GitHub commit occurs or a Notion document changes.</li>
+        </ul>
+        <p>The features may change at the operator's discretion and continuous operation is not guaranteed.</p>
+        <h2>Article 3 (Limitation of Liability)</h2>
+        <p>The service is provided "as is." The developer bears no legal responsibility for direct or indirect damages
+            caused by errors, external API policy changes or disputes between users.</p>
+        <h2>Article 4 (User Obligations)</h2>
+        <ul>
+            <li>Users must not attempt unauthorized access, tamper with systems or use illegal programs or malicious
+                automation.
+            </li>
+        </ul>
+        <p>Violations may result in service termination or sanctions from Discord.</p>
+        <h2>Article 5 (Intellectual Property)</h2>
+        <p>The code, features and documents of this service are released under the Apache License 2.0.</p>
+        <p>Logos of Discord, GitHub and Notion belong to their respective owners; this service is not an official
+            product of those platforms.</p>
+        <h2>Article 6 (Contact)</h2>
+        <ul>
+            <li>Join the <a href="https://discord.gg/HzAnBSCN7t">Discord support server</a></li>
+            <li>Or send the bot a DM on Discord</li>
+        </ul>
+        <p>Last updated: May 14, 2025</p>
+        <hr/>
+    </div>
+
+    <div class="content-box" id="privacy" style="display: none;">
+        <h2>Article 1 (Purpose)</h2>
+        <p>This policy explains how the service collects, uses and protects personal data. The company (the Discord bot)
+            complies with relevant laws and securely handles user information.</p>
+        <h2>Article 2 (Principles of Personal Data Handling)</h2>
+        <p>Only the minimum personal data is collected, used solely for the stated purpose, and never shared with third
+            parties without consent.</p>
+        <h2>Article 3 (Publication)</h2>
+        <p>This policy is always available via Discord commands or the linked web page.</p>
+        <h2>Article 4 (Changes)</h2>
+        <p>We announce changes at least 7 days in advance, and major changes at least 30 days in advance.</p>
+        <h2>Article 5 (Data Collected and Methods)</h2>
+        <ul>
+            <li>Discord user ID, username, tag and avatar</li>
+            <li>Server ID, name and roles</li>
+            <li>Information users enter via commands, modals or components (e.g., a Notion token)</li>
+            <li><strong>We never store regular Discord message content in any form</strong></li>
+        </ul>
+        <h2>Article 6 (Use of Personal Data)</h2>
+        <ul>
+            <li>Providing Notion integration and alert features</li>
+            <li>Personalized features and system improvements</li>
+            <li>Delivering notices and improving service quality</li>
+            <li><strong>We do not store or analyze regular Discord chat messages</strong></li>
+        </ul>
+        <h2>Article 7 (Retention Period)</h2>
+        <p>Personal data is destroyed once the purpose is achieved and is not kept long term. Notion tokens are deleted
+            immediately when unlinked or the bot is removed from the server.</p>
+        <h2>Article 8 (Statutory Retention)</h2>
+        <p>We do not collect consumer or payment records, so statutory retention periods are not applicable.</p>
+        <h2>Article 9 (Destruction of Personal Data)</h2>
+        <p>Personal data that has served its purpose or exceeded its retention period is promptly destroyed using
+            irreversible methods.</p>
+        <h2>Article 9‑2 (Overseas Transfer)</h2>
+        <p>We use overseas APIs such as Discord, GitHub and Notion. Information is sent to those platforms only for
+            authentication and is not stored separately by the company.</p>
+        <h2>Article 10 (Procedure for Deletion)</h2>
+        <p>All personal data is kept electronically and deleted immediately when no longer needed.</p>
+        <h2>Article 11 (Method of Deletion)</h2>
+        <p>Electronic files are securely destroyed using technical measures that prevent recovery.</p>
+        <h2>Article 12 (Cookies)</h2>
+        <p>Cookies may be used to provide customized service. Users can refuse them through browser settings.</p>
+        <ul>
+            <li>Edge: Settings > Cookies and site permissions</li>
+            <li>Chrome: Settings > Privacy and security > Cookies</li>
+            <li>Whale: Settings > Privacy > Cookies and other site data</li>
+        </ul>
+        <h2>Article 13 (Cookie Settings)</h2>
+        <p>Cookie settings can be adjusted in each browser and some functions may be limited.</p>
+        <h2>Article 14 (Third‑Party Provision and Outsourcing)</h2>
+        <p>We do not provide personal data to third parties or outsource its processing.</p>
+        <h2>Article 15 (Notion Integration Permissions)</h2>
+        <p>Users connect with a self‑created Notion integration token that has access only to databases they
+            designate.<br/>
+            <strong>For security, grant only page read access. Do not grant permissions to edit, delete or share
+                pages.</strong> The company is not liable for issues caused by incorrect permission settings.</p>
+        <h2>Article 16 (Inquiries)</h2>
+        <p>For questions about this policy, join the <a href="https://discord.gg/HzAnBSCN7t">official support server</a>
+            or DM the bot on Discord. Any information provided for inquiries is not stored and is used solely to
+            respond.</p>
+        <p>Last updated: May 30, 2025</p>
+    </div>
+    <footer>
+        <p>© 2025 Notipy. Open-sourced under the Apache License 2.0.</p>
+    </footer>
+</div>
+<script>
+    function showContent(content, button) {
+        const termsContent = document.getElementById('terms');
+        const privacyContent = document.getElementById('privacy');
+        const buttons = document.querySelectorAll('.buttons button');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        if (content === 'terms') {
+            termsContent.style.display = 'block';
+            privacyContent.style.display = 'none';
+        } else if (content === 'privacy') {
+            termsContent.style.display = 'none';
+            privacyContent.style.display = 'block';
+        }
+    }
+</script>
+<script src="/static/js/lang.js"></script>
+</body>
+</html>

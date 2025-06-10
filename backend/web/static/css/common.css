@@ -1,0 +1,386 @@
+/* ===== 전체 공통 기본 ===== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f4f4f4;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+/* ===== 헤더 ===== */
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5865F2;
+    color: white;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 10;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.back-button:hover {
+    color: #ddd;
+}
+
+/* ===== 공통 콘텐츠 박스 ===== */
+.wrapper {
+    flex: 1;
+    /*min-height: calc(100vh - 60px);*/
+}
+
+.content-grid {
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto 50px;
+    padding: 40px 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* ===== 버튼 ===== */
+.buttons {
+    text-align: center;
+    margin: 20px;
+}
+
+.buttons button,
+.agree-btn {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    margin: 0 10px;
+    background-color: #5865F2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.buttons button:hover,
+.agree-btn:hover {
+    background-color: #4752C4;
+    transform: scale(1.05);
+}
+
+.buttons button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttons button.active {
+    background-color: #4752C4;
+}
+
+.agree-btn:disabled {
+    background-color: #d3d3d3;
+    color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* ===== 섹션 (2단 레이아웃 지원) ===== */
+.section {
+    flex: 1 1 48%;
+    min-width: 360px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== FAQ / 공지 ===== */
+ul.faq, ul.notice {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.faq li, ul.notice li {
+    background: #e6f2ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    word-break: break-word;
+}
+
+ul.faq li h3, ul.notice li h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    color: #333;
+}
+
+ul.faq li p, ul.notice li p {
+    color: #555;
+    margin: 4px 0;
+}
+
+/* ===== 푸터 ===== */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.2rem;
+        padding: 16px;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    .back-button {
+        font-size: 1.2rem;
+        left: 16px;
+    }
+
+    .content-grid {
+        padding: 24px;
+        margin: 0 16px 100px 16px;
+    }
+
+
+    .section {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    .content-grid {
+        padding: 16px;
+    }
+
+
+}
+
+/* ===== 관리자 입력 폼 ===== */
+.admin-controls input,
+.admin-controls textarea,
+.faq-form textarea,
+.faq-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.admin-controls button,
+.faq-form button {
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: #5865F2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.admin-controls button:hover,
+.faq-form button:hover {
+    background-color: #4752c4;
+}
+
+/* ===== 답변 영역 ===== */
+.admin-answer textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.admin-answer button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5865F2;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.answer-status {
+    color: #5865F2;
+    font-weight: bold;
+}
+
+.waiting-status {
+    color: #a6a5a4;
+    font-weight: bold;
+}
+
+.answer-text-block {
+    margin-top: 8px;
+    background: #f0f0ff;
+    padding: 10px;
+    border-radius: 6px;
+    color: #333;
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+}
+
+/* ===== 아이콘 ===== */
+.admin-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Language selector inside header */
+header .lang-btn {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
+    width: 40px;
+    cursor: pointer;
+}
+
+/* Popup for language options */
+.lang-popup {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: white;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.lang-popup a {
+    display: block;
+    padding: 4px 10px;
+    color: #5865F2;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lang-popup a:hover {
+    background-color: #f0f0f0;
+}
+
+/* ===== 로딩 애니메이션 ===== */
+.loader {
+    width: 40px;
+    aspect-ratio: 1;
+    --c: linear-gradient(#000 0 0);
+    --m: radial-gradient(farthest-side, #000 92%, #0000);
+    background: var(--c), var(--m), var(--c), var(--m), var(--c), var(--m);
+    background-size: 8px 15px, 8px 8px;
+    background-repeat: no-repeat;
+    animation: l15 2s infinite;
+}
+
+@keyframes l15 {
+    0% {
+        background-position: 0 0, 0 100%, 50% 0, 50% 100%, 100% 0, 100% 100%;
+    }
+    11.11% {
+        background-position: 0 calc(100% - 8px), 0 100%, 50% 0, 50% 100%, 100% 0, 100% 100%;
+    }
+    22.22% {
+        background-position: 0 calc(100% - 8px), 0 100%, 50% calc(100% - 8px), 50% 100%, 100% 0, 100% 100%;
+    }
+    33.33% {
+        background-position: 0 calc(100% - 8px), 0 100%, 50% calc(100% - 8px), 50% 100%, 100% calc(100% - 8px), 100% 100%;
+    }
+    44.44% {
+        background-position: 0 0, 0 15px, 50% calc(100% - 8px), 50% 100%, 100% calc(100% - 8px), 100% 100%;
+    }
+    55.55% {
+        background-position: 0 0, 0 15px, 50% 0, 50% 15px, 100% calc(100% - 8px), 100% 100%;
+    }
+    66.66% {
+        background-position: 0 0, 0 15px, 50% 0, 50% 15px, 100% 0, 100% 15px;
+    }
+    77.77% {
+        background-position: 0 0, 0 100%, 50% 0, 50% 15px, 100% 0, 100% 15px;
+    }
+    88.88% {
+        background-position: 0 0, 0 100%, 50% 0, 50% 100%, 100% 0, 100% 15px;
+    }
+    100% {
+        background-position: 0 0, 0 100%, 50% 0, 50% 100%, 100% 0, 100% 100%;
+    }
+}
+
+/* ===== 단일 콘텐츠 박스 (예: policy.html) ===== */
+.content-box {
+    max-width: 960px;
+    margin: 0 auto 50px;
+    padding: 40px 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}

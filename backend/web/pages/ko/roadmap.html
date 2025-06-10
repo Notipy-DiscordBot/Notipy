@@ -1,0 +1,212 @@
+<!-- 
+  ✅ 로드맵 페이지 (roadmap.html)
+  주요 기능:
+  - 기술 스택, 배포 환경, 협업 도구를 시각화한 다이어그램
+  - 주요 개발 일정을 타임라인 형태로 정리
+  - 노드에 마우스를 올리면 툴팁으로 상세 설명 제공
+-->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 메타 정보 및 아이콘 폰트 불러오기 -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>로드맵</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/static/css/common.css"/>
+    <link rel="stylesheet" href="/static/css/roadmap.css"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+
+<body>
+<div class="wrapper" style="margin-bottom: 0;">
+    <!-- 상단 헤더 -->
+    <header>
+        <i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+        로드맵
+        <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language"
+             onclick="toggleLangPopup()"/>
+    </header>
+    <div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+
+    <!-- 기술 / 배포 / 협업 분류 다이어그램 -->
+    <div class="diagram-container">
+        <!-- 기술 스택 섹션 -->
+        <div class="category-section">
+            <div class="category-title">기술 스택</div>
+            <div class="category-box tech">
+                <div class="node" data-key="Python"><strong>Python</strong><span>백엔드 언어</span></div>
+                <div class="node" data-key="API"><strong>API</strong><span>시스템 연동</span></div>
+                <div class="node" data-key="도구"><strong>도구</strong><span>운영 환경</span></div>
+            </div>
+        </div>
+        <!-- 배포 환경 섹션 -->
+        <div class="category-section">
+            <div class="category-title">배포 환경</div>
+            <div class="category-box deploy">
+                <div class="node" data-key="GitHub"><strong>GitHub</strong><span>버전 관리</span></div>
+                <div class="node" data-key="Docker"><strong>Docker</strong><span>배포 자동화</span></div>
+                <div class="node" data-key="Nginx"><strong>Nginx</strong><span>트래픽 제어</span></div>
+            </div>
+        </div>
+        <!-- 협업 도구 섹션 -->
+        <div class="category-section">
+            <div class="category-title">협업 도구</div>
+            <div class="category-box collab">
+                <div class="node" data-key="Notion"><strong>Notion</strong><span>문서 & 일정</span></div>
+                <div class="node" data-key="Discord"><strong>Discord</strong><span>실시간 소통</span></div>
+                <div class="node" data-key="GitHub 협업"><strong>GitHub 협업</strong><span>코드 기반</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 타임라인 구분선 및 제목 -->
+    <hr style="width: 70%; margin: 40px auto; border: none; border-top: 2px solid #ccc; opacity: 0.6;"/>
+    <h2 style="text-align: center;">타임라인</h2>
+
+    <!-- 미래 타임라인 -->
+    <div class="timeline upcoming" hx-get="/api/web/upcoming" hx-swap="innerHTML" hx-trigger="load">
+    </div>
+    <!-- 타임라인 리스트 -->
+    <div class="timeline">
+        <ul>
+            <li class="timeline-now">
+                <div class="now-label">🕒 현재 시점</div>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/34">
+                    <span class="time">2025-06-09</span>
+                    <div class="content">
+                        <h3>웹 다국어 지원 추가</h3>
+                        <p>Notipy 웹페이지에 영어 버전을 추가했습니다.</p>
+                        <p>이제 사용자는 한국어와 영어 중에서 원하는 언어를 선택할 수 있습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/25">
+                    <span class="time">2025-06-06</span>
+                    <div class="content">
+                        <h3>타임라인 UI 적용</h3>
+                        <p>로드맵 페이지에 vertical timeline 형태의 UI를 도입했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <span class="time">2025-06-05</span>
+                <div class="content">
+                    <h3>FAQ 및 커뮤니티 확장</h3>
+                    <p>FAQ 통합, Contributor 가이드, 커뮤니티 페이지 구조 확장 작업이 이루어졌습니다.</p>
+                </div>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/24">
+                    <span class="time">2025-06-02</span>
+                    <div class="content">
+                        <h3>다국어 정책 페이지 추가</h3>
+                        <p>Terms of Use, Privacy Policy 등을 영문화하고 실제 배포 도메인을 적용했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/20">
+                    <span class="time">2025-05-29</span>
+                    <div class="content">
+                        <h3>최종 발표 버전 릴리즈</h3>
+                        <p>최종 보고 및 발표용으로 프로젝트를 안정화하고 UI를 정리했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/16">
+                    <span class="time">2025-05-26</span>
+                    <div class="content">
+                        <h3>LLM 역할 분석 기능 추가</h3>
+                        <p>깃허브 사용자 데이터를 기반으로 LLM이 역할을 추천하는 기능을 추가했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/13">
+                    <span class="time">2025-05-24</span>
+                    <div class="content">
+                        <h3>디스코드 봇 MVP 기능 완성</h3>
+                        <p>프로젝트 알림, 커뮤니티, FAQ 페이지를 포함한 기본 기능들을 구현했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/macqueen0987/NotiPy/pull/7">
+                    <span class="time">2025-05-20</span>
+                    <div class="content">
+                        <h3>노션 연동 기능 완성</h3>
+                        <p>노션 웹훅 기반 알림 시스템을 구축하고, 내부 API 요청 검증 로직을 추가했습니다.</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <span class="time">2025-04-08</span>
+                <div class="content">
+                    <h3>깃허브-디스코드 연동 기능 구현</h3>
+                    <p>깃허브와 디스코드 사용자 정보 연동 기능을 구현했습니다.</p>
+                </div>
+            </li>
+            <li>
+                <span class="time">2025-04-02</span>
+                <div class="content">
+                    <h3>프로젝트 초기화</h3>
+                    <p>Initial Commit과 함께 개발 환경과 리포지토리를 구성했습니다.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- 노드 설명 툴팁 영역 -->
+    <div id="tooltip"></div>
+
+    <!-- 하단 푸터 -->
+    <footer>
+        &copy; 2025 Notipy. Open-sourced under the Apache License 2.0.
+    </footer>
+</div>
+
+
+<!-- 툴팁 기능 구현 JS -->
+<script>
+    const tooltip = document.getElementById("tooltip");
+
+    const explanations = {
+        "Python": "FastAPI, SQLAlchemy로 백엔드 구성. Alembic으로 DB 마이그레이션 관리.",
+        "API": "Notion, GitHub, Discord API로 외부 시스템 실시간 연동.",
+        "도구": "Docker, MySQL, Nginx 기반의 안정적인 배포 환경.",
+        "GitHub": "코드 버전 관리 및 협업 도구로 PR 리뷰와 이슈 관리 가능.",
+        "Docker": "컨테이너 기반으로 일관된 환경에서 배포 자동화.",
+        "Nginx": "트래픽 라우팅, 정적 파일 제공 및 로드 밸런싱 수행.",
+        "Notion": "업무 일정 및 문서 협업에 활용. 페이지 기반 관리.",
+        "Discord": "봇 기반 알림, 스레드, DM 등 실시간 커뮤니케이션.",
+        "GitHub 협업": "Pull Request 기반의 팀 협업 구조 구축."
+    };
+
+    document.querySelectorAll('.node').forEach(node => {
+        node.addEventListener('mouseenter', (e) => {
+            const key = e.currentTarget.dataset.key;
+            if (!key || !explanations[key]) return;
+
+            tooltip.textContent = explanations[key];
+            const rect = e.currentTarget.getBoundingClientRect();
+
+            tooltip.style.left = `${rect.left + window.scrollX}px`;
+            tooltip.style.top = `${rect.bottom + 10 + window.scrollY}px`;
+            tooltip.style.display = "block";
+        });
+
+        node.addEventListener('mouseleave', () => {
+            tooltip.style.display = "none";
+        });
+    });
+</script>
+<script src="/static/js/lang.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Discord Bot Landing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <link href="/static/css/index.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body>
+<!-- 🚀 Navigation -->
+<div class="navbar">
+    <a href="#features">Features</a>
+    <a href="policy">Policy</a>
+    <a href="#">Use Cases</a>
+    <a href="roadmap">Roadmap</a>
+    <a href="community">Community</a>
+    <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
+    <div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+</div>
+
+<!-- 💡 Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Connect Smarter.<br/>Collaborate Better.</h1>
+            <p>
+                Notion, GitHub, and Discord are seamlessly integrated, so your team's workflow continues automatically.
+                From now on, complete your workflow on Discord.<br/>
+            </p>
+            <button class="btn-primary" onclick="location.href='terms-consent'">Invite Discord Bot</button>
+        </div>
+        <div class="hero-image">
+            <img alt="Discord Image" src="/static/img/discord.png"/>
+        </div>
+    </div>
+</section>
+
+<!-- 🔧 Features Section -->
+<section class="features" id="features">
+    <!-- 📌 Feature 1 -->
+    <div class="glass-box">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>From Notion<br/>to Discord — Instantly</h3>
+                <p>
+                    Create a project in Notion.<br/>
+                    We’ll instantly open a matching space in Discord.<br/>
+                    Stay in sync — in real time.
+                </p>
+            </div>
+            <div class="feature-image">
+                <img alt="Auto Conversion Image" src="/static/img/first-feature.png"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 Feature 2 -->
+    <div class="glass-box">
+        <div class="feature-row reverse">
+            <div class="feature-text">
+                <h3>Automatic Updates<br/>in Discord</h3>
+                <p>
+                    Any change in Notion or GitHub?<br/>
+                    The bot lets you know — instantly.<br/>
+                    No need to leave Discord to stay updated.
+                </p>
+            </div>
+            <div class="feature-image">
+                <img alt="Auto Notification Image" src="/static/img/second-feature.png"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 Feature 3 -->
+    <div class="glass-box">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Smarter GitHub<br/>Insights</h3>
+                <p>
+                    Bring GitHub context into Discord.<br/>
+                    See project history and contributions<br/>
+                    — all in one place.
+                </p>
+            </div>
+            <div class="feature-image">
+                <img alt="AI Analysis Image" src="/static/img/third-feature.png"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 📣 CTA Section -->
+<section class="cta">
+    <h2>Get Started<br/>Now</h2>
+    <button class="btn-primary" onclick="location.href='terms-consent'">Invite Discord Bot</button>
+</section>
+
+<!-- 📎 Footer -->
+<footer style="
+    background-color: rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: left;">
+        <p style="font-size: 1.2rem; font-weight: bold; margin: 0 0 0.5rem 0;">
+            Discord-bot, NotiPy
+        </p>
+        <p style="margin: 0.2rem 0;">
+            This project was created as part of the Open Source Software Project course at
+            Chung-Ang University's School of Software.
+        </p>
+        <p style="margin: 0.2rem 0;">
+            © 2025 Notipy. Open-sourced under the Apache License 2.0.
+        </p>
+    </div>
+</footer>
+
+<!-- 🍪 Cookie Consent -->
+<div class="cookie-banner" id="cookie-banner">
+    <p>This website uses cookies.<br/>
+        <a href="policy">Learn more</a>.
+    </p>
+    <button class="cookie-btn" onclick="acceptCookies();">Accept</button>
+    <button class="cookie-btn cookie-deny" onclick="hideCookieBanner();">Decline</button>
+</div>
+
+<!-- ⬆️ Scroll to Top -->
+<button id="scrollToTopBtn" onclick="scrollToTop()" title="Back to top">⬆</button>
+
+<script src="/static/js/index.js"></script>
+<script src="/static/js/lang.js"></script>
+</body>
+</html>

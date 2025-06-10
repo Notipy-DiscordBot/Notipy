@@ -1,0 +1,71 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    /* ✅ 배경 이미지를 중앙에 고정, 꽉 채우기 */
+    background-image: url('/static/img/discord-bot-success2.png');
+    background-size: cover; /* ✅ 꽉 채우되 잘리는 건 허용 */
+    background-position: center center; /* ✅ 중심부 고정 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: black;
+
+    /* ✅ 화면 중앙 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.modal-box {
+    /* ✅ 어두운 투명 배경 + 블러 효과 */
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    padding: 28px 24px;
+    border-radius: 16px;
+    text-align: center;
+    color: white;
+    width: clamp(280px, 80%, 480px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.modal-box h1 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    margin-bottom: 20px;
+    color: #00FFCC;
+}
+
+.modal-box p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 20px;
+}
+
+.btn-group {
+    /* ✅ 버튼 그룹 정렬 및 간격 */
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.btn-group a {
+    /* ✅ 버튼 스타일 */
+    padding: clamp(10px, 2vw, 14px) clamp(16px, 4vw, 28px);
+    background-color: #5865F2;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: background-color 0.3s ease;
+}
+
+.btn-group a:hover {
+    background-color: #4752c4; /* ✅ hover 시 색상 변화 */
+}

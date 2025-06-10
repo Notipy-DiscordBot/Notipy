@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Discord Bot Landing</title>
+
+    <!-- 🌐 외부 스타일시트 연결 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+    <!-- 🎨 내부 스타일 정의 -->
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body>
+
+<!-- 🚀 상단 네비게이션바 -->
+<div class="navbar">
+    <a href="#features">주요기능</a>
+    <a href="policy">이용정책</a>
+    <a href="case">활용사례</a>
+    <a href="roadmap">로드맵</a>
+    <a href="community">커뮤니티</a>
+    <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
+    <div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+</div>
+
+<!-- 💡 Hero 섹션: 메인 메시지 및 CTA 버튼 -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>협업은 그대로<br/>
+                연결은 더<br/>
+                스마트하게
+            </h1>
+            <p>
+                노션, 깃허브, 디스코드가 하나로 연결되어 팀의 흐름이 자동으로 이어집니다. 이제부터 당신의 워크플로우를 디스코드 위에서 완성하세요.<br/>
+            </p>
+            <button class="btn-primary" onclick="location.href='terms-consent'">
+                디스코드 봇 불러오기
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="/static/img/discord.png" alt="디스코드 이미지"/>
+        </div>
+    </div>
+</section>
+
+<!-- 🔧 주요 기능 섹션 -->
+<section id="features" class="features">
+
+    <!-- 📌 기능 1: 노션 → 포럼 스레드 자동 생성 -->
+    <div class="glass-box">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>
+                    노션 페이지 <br/>
+                    디스코드 포럼 스레드로<br/>
+                    자동 전환!<br/>
+                </h3>
+                <p>
+                    노션에 새 프로젝트를 만들면,
+                    디스코드에 해당 프로젝트를 위한 대화공간이 자동으로 생성됩니다.
+                    실시간 협업, 이제 더는 놓치지 마세요!
+                </p>
+            </div>
+            <div class="feature-image">
+                <img src="/static/img/first-feature.png" alt="자동 전환 이미지"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 기능 2: 변경사항 자동 알림 -->
+    <div class="glass-box">
+        <div class="feature-row reverse">
+            <div class="feature-text">
+                <h3>
+                    손 안 대도 전해지는 소식! <br/>
+                    모든 변경사항, <br/>
+                    디스코드로 바로 전달됩니다.
+                </h3>
+                <p>
+                    노션이나 깃허브에서 수정이 이뤄지면, 봇이 자동으로 알려드립니다.
+                    디스코드에서 더 쉽고 빠르게 소통하세요!
+                </p>
+            </div>
+            <div class="feature-image">
+                <img src="/static/img/second-feature.png" alt="자동 전송 이미지"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📌 기능 3: GitHub 맥락 기반 요약 -->
+    <div class="glass-box">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>
+                    코드를 넘어, <br/>
+                    맥락까지 읽다
+                </h3>
+                <p>
+                    GitHub 프로필을 요약하고 프로젝트를 Discord 내에서 손쉽게 관리하세요.
+                    개발 히스토리와 협업 정보를 한눈에 전달해드립니다!
+                </p>
+            </div>
+            <div class="feature-image">
+                <img src="/static/img/third-feature.png" alt="AI 분석 이미지"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 📣 하단 CTA 섹션 -->
+<section class="cta">
+    <h2>지금 체험해보세요!</h2>
+    <button onclick="location.href='terms-consent'" class="btn-primary">디스코드 봇 불러오기</button>
+</section>
+
+<!-- 📎 푸터 정보 -->
+<footer style="
+    background-color: rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: left;">
+        <p style="font-size: 1.2rem; font-weight: bold; margin: 0 0 0.5rem 0;">
+            Discord-bot, NotiPy
+        </p>
+        <p style="margin: 0.2rem 0;">
+            본 프로젝트는 중앙대학교 소프트웨어학부 오픈소스소프트웨어프로젝트 수업의 일환으로 기획되었습니다.
+        </p>
+        <p style="margin: 0.2rem 0;">
+            © 2025 Notipy. Open-sourced under the Apache License 2.0.
+        </p>
+    </div>
+</footer>
+
+<div class="cookie-banner" id="cookie-banner">
+    <p>
+        본 홈페이지는 쿠키를 사용합니다.<br>
+        <a href="policy">자세히 알아보기</a>.
+    </p>
+    <button class="cookie-btn" onclick="acceptCookies();">
+        확인
+    </button>
+    <button class="cookie-btn cookie-deny" onclick="hideCookieBanner();">취소</button>
+</div>
+
+<!-- ⬆️ 스크롤 최상단 이동 버튼 -->
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="맨 위로">⬆</button>
+
+<!-- 📜 스크롤 제어 스크립트 -->
+<script src="/static/js/index.js"></script>
+<script src="/static/js/lang.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 메타 설정 및 외부 아이콘 폰트 로딩 -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+        이용정책
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="/static/css/common.css" rel="stylesheet"/>
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+<body>
+<!-- 상단 헤더 -->
+<header>
+    <i class="fas fa-arrow-left back-button" onclick="location.href='index'">
+    </i>
+    <h1>
+        이용정책
+    </h1>
+    <img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
+</header>
+<div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
+<!-- 영문 페이지 링크 안내 -->
+<p style="text-align: center;">
+    For other languages, check the
+    <a href="https://github.com/macqueen0987/NotiPy/blob/master/docs/en/terms-policy.md">
+        GitHub page
+    </a>
+    .
+</p>
+<!-- 탭 버튼 -->
+<div class="buttons">
+    <button onclick="showContent('terms', this)">
+        이용약관
+    </button>
+    <button onclick="showContent('privacy', this)">
+        개인정보처리방침
+    </button>
+</div>
+<div class="wrapper">
+    <!-- 이용약관 본문 -->
+    <div class="content-box" id="terms">
+        <h2>
+            제1조 (이용 목적)
+        </h2>
+        <p>
+            본 서비스는 협업 플랫폼 간 정보 연동, 자동화 메시지 전송 및 구조화된 커뮤니케이션 흐름을 제공하여, 프로젝트 협업의 효율성을 높이는 데 목적이 있습니다.
+        </p>
+        <p>
+            이용자는 본 서비스를 자유롭게 사용할 수 있으며, 다음과 같은 용도로는 사용할 수 없습니다:
+        </p>
+        <ul>
+            <li>
+                타인의 권리를 침해하거나 불법적 활동을 위한 목적
+            </li>
+            <li>
+                Discord API, GitHub API, Notion API 등의 이용약관 위반 행위
+            </li>
+        </ul>
+        <h2>
+            제2조 (서비스 내용)
+        </h2>
+        <p>
+            본 서비스는 다음 기능을 포함합니다:
+        </p>
+        <ul>
+            <li>
+                Notion 페이지 생성 시 Discord 포럼 스레드 자동 생성
+            </li>
+            <li>
+                GitHub 커밋 또는 Notion 문서 변경 시 Discord 채널에 자동 알림 전송
+            </li>
+        </ul>
+        <p>
+            본 서비스는 GitHub, Notion, Discord API 연동을 기반으로 하며, 운영자에 의해 기능 개선 또는 변경될 수 있습니다.
+        </p>
+        <p>
+            서비스는 비상업적이며, 지속적인 운영 및 개선을 보장하지 않습니다.
+        </p>
+        <h2>
+            제3조 (책임의 한계)
+        </h2>
+        <p>
+            본 서비스는 "있는 그대로(As-Is)" 제공됩니다. 개발자는 기능의 오류, 외부 API 정책 변경, 이용자 간 분쟁 등으로 인해 발생하는 직접적 또는 간접적인 피해에 대해 어떠한 법적 책임도
+            지지
+            않습니다.
+        </p>
+        <h2>
+            제4조 (이용자의 의무)
+        </h2>
+        <p>
+            이용자는 서비스 이용 과정에서 다음을 준수해야 합니다:
+        </p>
+        <ul>
+            <li>
+                타인의 정보나 시스템을 침해하거나, 부정한 접근 또는 조작을 하지 않을 것
+            </li>
+            <li>
+                불법 프로그램 사용 또는 자동화된 악성 호출 등을 하지 않을 것
+            </li>
+        </ul>
+        <p>
+            위반 시, 서비스 제공이 중단되거나 Discord 측의 제재가 발생할 수 있습니다.
+        </p>
+        <h2>
+            제5조 (지식재산권 및 오픈소스 라이선스)
+        </h2>
+        <p>
+            본 서비스의 코드, 기능, 문서 등은 Apache License 2.0 하에 오픈소스로 제공됩니다.
+        </p>
+        <p>
+            누구나 자유롭게 사용, 수정, 배포할 수 있으며, 사용 시 출처 명시 및 라이선스 고지를 포함해야 합니다.
+        </p>
+        <p>
+            서비스 내 사용된 Discord, GitHub, Notion 등의 로고 및 상표권은 각 사의 자산이며, 본 서비스는 해당 플랫폼의 공식 제품이 아닙니다.
+        </p>
+        <h2>
+            제6조 (문의처)
+        </h2>
+        <p>
+            서비스 관련 문의는 아래 방법 중 하나를 통해 가능하며, 별도의 이메일 수신은 운영하지 않습니다:
+        </p>
+        <ul>
+            <li>
+                디스코드 지원 서버 참여:
+                <a href="https://discord.gg/HzAnBSCN7t">
+                    https://discord.gg/HzAnBSCN7t
+                </a>
+            </li>
+            <li>
+                또는 디스코드에서 봇에게 직접 DM
+            </li>
+        </ul>
+        <p>
+            최종 업데이트일: 2025년 5월 14일
+        </p>
+        <hr/>
+    </div>
+    <!-- 개인정보처리방침 본문 (초기에는 숨김) -->
+    <div class="content-box" id="privacy" style="display: none;">
+        <h2>
+            제1조 (목적)
+        </h2>
+        <p>
+            본 방침은 서비스 이용 시 이용자의 개인정보를 어떻게 수집·이용·보호하는지에 대한 기준을 제시합니다. 본 디스코드 봇(이하 ‘회사’)은 관련 법령을 준수하고, 이용자의 개인정보를 안전하게
+            처리합니다.
+        </p>
+        <h2>
+            제2조 (개인정보 처리의 원칙)
+        </h2>
+        <p>
+            회사는 최소한의 개인정보만을 수집하고, 수집 목적 이외의 용도로 사용하지 않으며, 이용자의 동의 없이 제3자에게 제공하지 않습니다.
+        </p>
+        <h2>
+            제3조 (방침의 공개)
+        </h2>
+        <p>
+            본 방침은 디스코드 명령어나 연결된 웹페이지를 통해 언제든지 확인할 수 있도록 공개됩니다.
+        </p>
+        <h2>
+            제4조 (방침의 변경)
+        </h2>
+        <p>
+            법령 및 정책 변경 시 최소 7일 전 공지하며, 중요한 변경사항은 최소 30일 전 공지됩니다.
+        </p>
+        <h2>
+            제5조 (개인정보 수집 항목 및 방법)
+        </h2>
+        <p>
+            회사는 디스코드 API가 제공하는 범위 내에서 다음과 같은 정보를 수집합니다:
+        </p>
+        <ul>
+            <li>
+                Discord 사용자 ID, 사용자명, 태그, 아바타
+            </li>
+            <li>
+                소속 서버 ID 및 이름, 서버 내 역할 정보
+            </li>
+            <li>
+                사용자가 Discord 명령어, Modal, 컴포넌트 등을 통해 직접 입력한 정보 (예: Notion 토큰)
+            </li>
+            <li>
+                <strong>
+                    Discord의 일반 메시지 본문(message content)은 어떠한 방식으로도 저장하지 않습니다.
+                </strong>
+            </li>
+        </ul>
+        <p>
+            이 정보는 디스코드 API, 명령어 입력, 외부 플랫폼 연동 과정 등에서 수집됩니다.
+        </p>
+        <h2>
+            제6조 (개인정보의 이용)
+        </h2>
+        <p>
+            수집된 개인정보는 다음 목적 범위 내에서만 사용됩니다:
+        </p>
+        <ul>
+            <li>
+                Notion 연동 및 알림 기능 제공
+            </li>
+            <li>
+                사용자 맞춤형 기능 및 시스템 개선
+            </li>
+            <li>
+                공지사항 전달 및 서비스 품질 향상
+            </li>
+            <li>
+                <strong>
+                    Discord 내 일반 채팅 메시지는 저장하거나 분석하지 않습니다.
+                </strong>
+            </li>
+        </ul>
+        <h2>
+            제7조 (보유 및 이용 기간)
+        </h2>
+        <p>
+            수집된 개인정보는 서비스 이용 목적 달성 시 즉시 파기되며, 특별한 사유가 없는 한 장기적으로 보관되지 않습니다. Notion 토큰은 연동 해제 또는 봇이 서버에서 추방되는 경우 즉시
+            파기됩니다.
+        </p>
+        <h2>
+            제8조 (법령에 따른 보유 기간)
+        </h2>
+        <p>
+            현재 회사는 관련 법령에서 별도로 요구하는 소비자 기록, 결제 정보 등을 수집·저장하지 않으므로 이에 따른 보유 기간은 적용되지 않습니다.
+        </p>
+        <h2>
+            제9조 (개인정보의 파기 원칙)
+        </h2>
+        <p>
+            회사는 수집 목적이 달성되거나 보유 기간이 경과한 개인정보는 복구 불가능한 방식으로 지체 없이 파기합니다.
+        </p>
+        <h2>
+            제9-2조 (국외이전)
+        </h2>
+        <p>
+            본 서비스는 Discord, GitHub, Notion 등의 해외 API를 사용하며, 인증 시점에 한하여 해당 플랫폼의 서버로 정보가 전송됩니다. 회사는 해당 정보를 별도로 저장하지 않습니다.
+        </p>
+        <h2>
+            제10조 (개인정보 파기 절차)
+        </h2>
+        <p>
+            모든 개인정보는 전자적 형태로만 보관되며, 더 이상 필요하지 않은 정보는 즉시 삭제됩니다. Notion 토큰은 연동 해제 또는 서버에서 봇이 제거되는 경우 즉시 삭제됩니다.
+        </p>
+        <h2>
+            제11조 (개인정보 파기 방법)
+        </h2>
+        <p>
+            전자파일은 복구 불가능한 기술적 방법을 통해 안전하게 삭제합니다.
+        </p>
+        <h2>
+            제12조 (쿠키 설치 및 운영)
+        </h2>
+        <p>
+            맞춤형 서비스 제공을 위해 쿠키를 사용할 수 있으며, 사용자는 브라우저 설정을 통해 이를 거부할 수 있습니다.
+        </p>
+        <ul>
+            <li>
+                Edge: 설정 &gt; 쿠키 및 사이트 권한
+            </li>
+            <li>
+                Chrome: 설정 &gt; 개인정보 및 보안 &gt; 쿠키
+            </li>
+            <li>
+                Whale: 설정 &gt; 개인정보 보호 &gt; 쿠키 및 기타 사이트 데이터
+            </li>
+        </ul>
+        <h2>
+            제13조 (쿠키 설정 허용 지정 방법)
+        </h2>
+        <p>
+            각 브라우저의 설정 메뉴를 통해 쿠키 허용 여부를 선택할 수 있으며, 일부 서비스 이용에 제한이 있을 수 있습니다.
+        </p>
+        <h2>
+            제14조 (제3자 제공 및 처리 위탁)
+        </h2>
+        <p>
+            회사는 개인정보를 제3자에게 제공하거나 외부 업체에 처리 위탁하지 않습니다.
+        </p>
+        <h2>
+            제15조 (Notion 연동 시 권한 설정 안내)
+        </h2>
+        <p>
+            사용자가 직접 생성한 Notion 통합 토큰을 이용해 연동하며, 해당 토큰은 오직 본인이 설정한 데이터베이스에만 접근할 수 있습니다.
+        </p>
+        <p>
+            <strong>
+                보안을 위해 페이지 읽기 권한만 부여하시기를 권장합니다. 페이지 수정, 삭제, 공유 등의 권한은 절대 부여하지 마십시오.
+            </strong>
+            회사는 사용자의 잘못된 권한 설정으로 인한 피해에
+            대해 책임을 지지 않습니다.
+        </p>
+        <h2>
+            제16조 (문의 안내)
+        </h2>
+        <p>
+            본 방침과 관련된 문의사항은 디스코드 공식 지원 서버를 통해 접수해주시거나 디스코드 상에서 봇에게 DM 보내시기 바랍니다.
+        </p>
+        <p>
+            📍 지원 서버:
+            <a href="https://discord.gg/HzAnBSCN7t">
+                https://discord.gg/HzAnBSCN7t
+            </a>
+        </p>
+        <p>
+            문의 시 개인정보는 별도로 저장되지 않으며, 문의 처리 목적 외로 사용되지 않습니다.
+        </p>
+        <p>
+            최종 업데이트일: 2025년 5월 30일
+        </p>
+    </div>
+    <footer>
+        <p>
+            © 2025 Notipy. Open-sourced under the Apache License 2.0.
+        </p>
+    </footer>
+</div>
+<!-- 하단 푸터 -->
+
+<!-- 버튼 클릭 시 콘텐츠 전환 스크립트 -->
+<script>
+    function showContent(content, button) {
+        const termsContent = document.getElementById('terms');
+        const privacyContent = document.getElementById('privacy');
+        const buttons = document.querySelectorAll('.buttons button');
+
+        // 모든 버튼 비활성화
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // 현재 클릭한 버튼만 활성화
+        button.classList.add('active');
+
+        // 콘텐츠 전환
+        if (content === 'terms') {
+            termsContent.style.display = 'block';
+            privacyContent.style.display = 'none';
+        } else if (content === 'privacy') {
+            termsContent.style.display = 'none';
+            privacyContent.style.display = 'block';
+        }
+    }
+</script>
+<script src="/static/js/lang.js"></script>
+</body>
+</html>
