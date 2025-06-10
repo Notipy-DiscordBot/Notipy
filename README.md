@@ -1,8 +1,8 @@
- <!-- <p align="center">   
-  <img src="https://yourdomain.com/banner.png" alt="Notipy Logo" width="400"/>
-</p>  -->
+<p align="center">   
+  <img src="https://github.com/Notipy-DiscordBot/Notipy/blob/main/resources/banner.png" alt="Notipy Logo"/>
+</p>
 
-<h1 align="center">Notipy</h1>
+<!-- <h1 align="center">Notipy</h1> -->
 <p align="center">Notion과 Discord를 연결하는 실시간 알림 시스템</p>
 <p align="center">
   <a href="https://www.docker.com/">
