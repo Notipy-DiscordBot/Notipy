@@ -18,7 +18,7 @@ discord_server_cache = get_discord_server_cache_service()
 
 
 async def set_notion_token(
-        conn: AsyncSession, discordid: int, token: str
+    conn: AsyncSession, discordid: int, token: str
 ) -> Optional[ServerInfo]:
     server = await get_discord_server(conn, discordid)
     if server is None:
@@ -40,7 +40,7 @@ async def get_notion_token(
 
 
 async def get_notion_database(
-        conn: AsyncSession, databaseid: str, eager_load: bool = False
+    conn: AsyncSession, databaseid: str, eager_load: bool = False
 ) -> Optional[NotionDatabase]:
     if not eager_load:
         notionlink = notion_database_cache.get(databaseid)
@@ -62,7 +62,7 @@ async def get_notion_database(
 
 
 async def get_linked_notion_database(
-        conn: AsyncSession, channelid: int, eager_load: bool = False
+    conn: AsyncSession, channelid: int, eager_load: bool = False
 ) -> Optional[NotionDatabase]:
     stmt = select(NotionDatabase).where(NotionDatabase.channel_id == channelid)
     if eager_load:
@@ -78,11 +78,11 @@ async def get_linked_notion_database(
 
 
 async def link_notion_database(
-        conn: AsyncSession,
-        discordid: int,
-        databaseid: str,
-        databasename: str,
-        channelid: int,
+    conn: AsyncSession,
+    discordid: int,
+    databaseid: str,
+    databasename: str,
+    channelid: int,
 ) -> None:
     notionlink = NotionDatabase(
         server_id=discordid,
@@ -96,7 +96,7 @@ async def link_notion_database(
 
 
 async def delete_notion_database(
-        conn: AsyncSession, databaseid: str
+    conn: AsyncSession, databaseid: str
 ) -> Optional[NotionDatabase]:
     """
     Delete a notion database from the database after retrieving it.
@@ -116,7 +116,7 @@ async def delete_notion_database(
 
 
 async def set_notion_database_name(
-        conn: AsyncSession, databaseid: str, name: str
+    conn: AsyncSession, databaseid: str, name: str
 ) -> Optional[NotionDatabase]:
     """
     Set the name of a notion database.
@@ -135,7 +135,7 @@ async def set_notion_database_name(
 
 
 async def create_notion_page(
-        conn: AsyncSession, pageid: str, databaseid: str
+    conn: AsyncSession, pageid: str, databaseid: str
 ) -> NotionPages:
     notionpage = NotionPages(page_id=pageid, database_id=databaseid)
     conn.add(notionpage)
@@ -145,7 +145,7 @@ async def create_notion_page(
 
 
 async def get_notion_page(
-        conn: AsyncSession, pageid: str, eager_load: bool = False
+    conn: AsyncSession, pageid: str, eager_load: bool = False
 ) -> Optional[NotionPages]:
     stmt = select(NotionPages).where(NotionPages.page_id == pageid)
     if eager_load:
@@ -158,7 +158,7 @@ async def get_notion_page(
 
 
 async def mark_update_notion_page(
-        conn: AsyncSession, pageid: str, databaseid: str
+    conn: AsyncSession, pageid: str, databaseid: str
 ) -> Optional[NotionPages]:
     notionpage = await get_notion_page(conn, pageid)
     if notionpage is None:
@@ -173,7 +173,9 @@ async def mark_update_notion_page(
     return notionpage
 
 
-async def remove_notion_page(conn: AsyncSession, pageid: str) -> Optional[NotionPages]:
+async def remove_notion_page(
+        conn: AsyncSession,
+        pageid: str) -> Optional[NotionPages]:
     """
     Remove a notion page from the database after retrieving it.
     :param conn: database connection
@@ -183,16 +185,14 @@ async def remove_notion_page(conn: AsyncSession, pageid: str) -> Optional[Notion
     notionpage = await get_notion_page(conn, pageid)
     if notionpage is None:
         return None
-    await conn.execute(
-        delete(NotionPages).where(NotionPages.page_id == pageid)
-    )
+    await conn.execute(delete(NotionPages).where(NotionPages.page_id == pageid))
     await conn.commit()
     notion_page_cache.delete(pageid)
     return notionpage
 
 
 async def toggle_block_notion_page(
-        conn: AsyncSession, pageid: str
+    conn: AsyncSession, pageid: str
 ) -> Optional[NotionPages]:
     notionpage = await get_notion_page(conn, pageid)
     if notionpage is None:
@@ -205,7 +205,7 @@ async def toggle_block_notion_page(
 
 
 async def get_all_updated_pages(
-        conn: AsyncSession,
+    conn: AsyncSession,
 ) -> Sequence[tuple[NotionPages, str, int, str, list[str]]]:
     page_query = (
         select(
@@ -214,12 +214,12 @@ async def get_all_updated_pages(
             NotionDatabase.channel_id,
             ServerInfo.server_id,
             ServerInfo.notion_token,
-        ).join(
+        ) .join(
             NotionDatabase,
-            NotionPages.database_id == NotionDatabase.database_id).join(
-            ServerInfo,
-            NotionDatabase.server_id == ServerInfo.server_id).where(
-            NotionPages.updated,
+            NotionPages.database_id == NotionDatabase.database_id) .join(
+                ServerInfo,
+                NotionDatabase.server_id == ServerInfo.server_id) .where(
+                    NotionPages.updated,
             NotionPages.blocked == False))
     page_results = (await conn.execute(page_query)).all()
 
@@ -250,7 +250,7 @@ async def get_all_updated_pages(
 
 
 async def set_thread_id(
-        conn: AsyncSession, pageid: str, threadid: int
+    conn: AsyncSession, pageid: str, threadid: int
 ) -> Optional[NotionPages]:
     notionpage = await get_notion_page(conn, pageid)
     if notionpage is None:
@@ -269,7 +269,7 @@ async def get_threads(conn: AsyncSession, databaseid: str) -> Sequence[int]:
 
 
 async def set_pages_updated(
-        conn: AsyncSession, threadids: Sequence[int]
+    conn: AsyncSession, threadids: Sequence[int]
 ) -> Optional[Sequence[NotionPages]]:
     query = select(NotionPages).where(NotionPages.thread_id.in_(threadids))
     result = await conn.execute(query)
@@ -287,7 +287,7 @@ async def set_pages_updated(
 
 
 async def update_notion_page_fields(
-        conn: AsyncSession, page: NotionPages, **kwargs
+    conn: AsyncSession, page: NotionPages, **kwargs
 ) -> None:
     stmt = (
         update(NotionPages).where(
@@ -298,7 +298,7 @@ async def update_notion_page_fields(
 
 
 async def update_notion_page_bulk_fields(
-        conn: AsyncSession, threadids: Sequence[int], **kwargs
+    conn: AsyncSession, threadids: Sequence[int], **kwargs
 ) -> None:
     stmt = (
         update(NotionPages).where(
@@ -309,7 +309,7 @@ async def update_notion_page_bulk_fields(
 
 
 async def update_notion_database_fields(
-        conn: AsyncSession, db: NotionDatabase, **kwargs
+    conn: AsyncSession, db: NotionDatabase, **kwargs
 ) -> None:
     stmt = (
         update(NotionDatabase)
