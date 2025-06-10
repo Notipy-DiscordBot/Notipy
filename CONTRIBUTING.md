@@ -54,7 +54,7 @@ Notipy 프로젝트에 기여해주셔서 감사합니다!
 ## 💬 문의 및 협업
 
 * Discord 서버: [초대링크](https://discord.gg/HzAnBSCN7t)
-* 공식 홈페이지: [https://notipy.dev](https://notipy.dev)
+* 공식 홈페이지: [https://notipy.code0987.com](https://notipy.code0987.com)
 * 깃허브 Discussions 또는 Issues 탭에서 의견 주세요!
 
 ---
