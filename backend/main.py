@@ -45,7 +45,7 @@ def redirect_to_lang_index(default_lang: str = "en"):
             cookies = request.cookies
             # 쿠키 사용에 동의하지 않은 경우 → 그냥 원래 함수 실행
             if cookies.get("cookiesAccepted") != "true":
-                return await func(request, *args, **kwargs)
+                return RedirectResponse(url=f"/{default_lang}/index")
             lang = cookies.get("lang")
             # lang 쿠키가 없으면 CF-IPCountry로 판단
             if not lang:
