@@ -126,22 +126,22 @@ Notipy **does not require any server installation**. You can simply invite the b
 
 * You can invite the bot through the [official website](https://notipy.code0987.com)
   or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify).
-  ![a](/web/static/img/en/invite-bot.png)
+  ![a](/backend/web/static/img/en/invite-bot.png)
 
 * After inviting, use the `/setup set-admin-role` command to configure admin access.
     - This ensures only users with the specified role can change bot settings.
-      ![a](/web/static/img/en/setting.png)
+      ![a](/backend/web/static/img/en/setting.png)
 
 ### ✅ Step 2. Configure Notion Integration
 
 * Use the `/notion set-token` command to register your Notion integration token.
     - You can create the token on the [Notion developer page](https://www.notion.so/my-integrations).
     - Once registered, the bot can access the corresponding Notion workspace.
-      ![a](/web/static/img/en/notion-token.png)
+      ![a](/backend/web/static/img/en/notion-token.png)
 
 * Use the `/notion connect-database` command to link your Notion database to a Discord channel.
     - During this process, you'll select which database to monitor and which channel to send notifications to.
-      ![a](/web/static/img/en/notion_db.png)
+      ![a](/backend/web/static/img/en/notion_db.png)
 
 <a id="commonly-used-commands"></a>
 ## 📋 Commonly Used Commands

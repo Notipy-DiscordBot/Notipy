@@ -122,22 +122,22 @@ Notipy는 **직접 서버에 설치하지 않아도** 사용할 수 있습니다
 * [공식 홈페이지](https://notipy.code0987.com)
   또는 [초대링크](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify)
   를 활용하여 봇을 초대할 수 있습니다.
-  ![a](/web/static/img/ko/invite-bot.png)
+  ![a](/backend/web/static/img/ko/invite-bot.png)
 
 * 초대를 하시면 원활한 사용을 위해 `/설정 관리자역할 설정` 명령어를 사용해주세요.
     - 이 명령어는 해당 역알을 가진 사람만 봇의 설정을 변경할 수 있도록 합니다.
-      ![a](/web/static/img/ko/setting.png)
+      ![a](/backend/web/static/img/ko/setting.png)
 
 ### ✅ 2단계. Notion 통합 설정하기
 
 * `/노션 노션토큰 설정` 명령어를 사용하여 Notion 통합 토큰을 등록합니다.
     - Notion 통합 토큰은 [Notion 개발자 페이지](https://www.notion.so/my-integrations)에서 생성할 수 있습니다.
     - 생성한 토큰을 입력하면 봇이 해당 워크스페이스에 접근할 수 있게 됩니다.
-      ![a](/web/static/img/ko/notion-token.png)
+      ![a](/backend/web/static/img/ko/notion-token.png)
 
 * `/노션 데이터베이스 연결` 명령어를 사용하여 Notion 데이터베이스와 Discord 채널을 연결합니다.
     - 이 과정에서 봇이 접근할 데이터베이스를 선택하고, 알림을 받을 Discord 채널을 지정합니다.
-      ![a](/web/static/img/ko/notion_db.png)
+      ![a](/backend/web/static/img/ko/notion_db.png)
 
 <a id="자주-사용하는-명령어-요약"></a>
 
