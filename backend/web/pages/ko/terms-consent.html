@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>이용약관 및 개인정보처리방침</title>
     <link rel="stylesheet" href="/static/css/terms-consent.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
-    
+
 </head>
 <body>
-<img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" style="position: fixed; top:20px; right:20px;" onclick="toggleLangPopup()"/>
+<i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+<img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
 <div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
 <!-- ✅ 약관 및 정책을 출력하는 영역 -->
 <div class="container">
     <div class="terms-box" id="terms-box">
-        <p style="text-align: center;">For other languages, check the <a href="https://github.com/Notipy-DiscordBot/Notipy/blob/master/docs/en/terms-policy.md" target="_blank">GitHub page</a>.</p>
+        <p style="text-align: center;">For other languages, check the <a
+                href="https://github.com/Notipy-DiscordBot/Notipy/blob/master/docs/en/terms-policy.md" target="_blank">GitHub
+            page</a>.</p>
         <h1><strong>이용약관</strong></h1>
         <h2>제1조 (이용 목적)</h2>
         <p>본 서비스는 협업 플랫폼 간 정보 연동, 자동화 메시지 전송 및 구조화된 커뮤니케이션 흐름을 제공하여, 프로젝트 협업의 효율성을 높이는 데 목적이 있습니다.</p>

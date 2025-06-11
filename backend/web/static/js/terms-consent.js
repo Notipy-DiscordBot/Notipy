@@ -39,11 +39,11 @@ agreeButton.onclick = () => {
     const top = (screen.height - height) / 2;
 
     const popup = window.open(
-        "https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Fko%2Foauth-popup&integration_type=0&scope=bot+identify",
+        "https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify",
         "discordOAuth",
         `width=${width},height=${height},top=${top},left=${left}`
     );
-    
+
     if (!popup) {
         alert("팝업 차단을 해제해주세요!");
     }
@@ -54,6 +54,6 @@ window.addEventListener("message", (event) => {
     console.log("✅ 메시지 수신:", event.origin, event.data);
     if (event.origin !== "https://notipy.code0987.com") return;
     if (event.data === "discord-auth-success") {
-        window.location.href = "/ko/oauth-success.html";
+        window.location.href = "/oauth-success";
     }
 });

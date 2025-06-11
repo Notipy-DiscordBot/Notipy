@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Terms of Use and Privacy Policy</title>
     <link rel="stylesheet" href="/static/css/terms-consent.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
 <body>
-<img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" style="position: fixed; top:20px; right:20px;" onclick="toggleLangPopup()"/>
+<i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+<img id="lang-btn" class="lang-btn" src="/static/img/translation.png" alt="Language" onclick="toggleLangPopup()"/>
 <div id="lang-popup" hx-get="/api/web/lang-popup" hx-trigger="load" class="lang-popup" hx-swap="outerHTML"></div>
 <!-- ✅ Area to display terms and policies -->
 <div class="container">
     <div class="terms-box" id="terms-box">
-        <p style="text-align: center;">For other languages, check the <a href="https://github.com/Notipy-DiscordBot/Notipy/blob/master/docs/en/terms-policy.md" target="_blank">GitHub page</a>.</p>
+        <p style="text-align: center;">For other languages, check the <a
+                href="https://github.com/Notipy-DiscordBot/Notipy/blob/master/docs/en/terms-policy.md" target="_blank">GitHub
+            page</a>.</p>
         <h1><strong>Terms of Use</strong></h1>
         <h2>Article 1 (Purpose of Use)</h2>
-        <p>This service aims to enhance project collaboration efficiency by providing information integration across platforms, automated message delivery, and a structured communication flow.</p>
+        <p>This service aims to enhance project collaboration efficiency by providing information integration across
+            platforms, automated message delivery, and a structured communication flow.</p>
         <p>Users are free to use the service, except for the following purposes:</p>
         <ul>
             <li>Activities that infringe on others' rights or for illegal purposes</li>
@@ -29,11 +34,13 @@
             <li>Automatically create a Discord forum thread when a Notion page is created</li>
             <li>Send automated notifications to Discord channels on GitHub commits or Notion document updates</li>
         </ul>
-        <p>This service is based on integrations with GitHub, Notion, and Discord APIs and may be improved or changed by the operator.</p>
+        <p>This service is based on integrations with GitHub, Notion, and Discord APIs and may be improved or changed by
+            the operator.</p>
         <p>The service is non-commercial and does not guarantee continuous operation or improvement.</p>
 
         <h2>Article 3 (Limitation of Liability)</h2>
-        <p>This service is provided "as is." The developer assumes no legal responsibility for any direct or indirect damages caused by feature errors, changes in external API policies, or disputes among users.</p>
+        <p>This service is provided "as is." The developer assumes no legal responsibility for any direct or indirect
+            damages caused by feature errors, changes in external API policies, or disputes among users.</p>
 
         <h2>Article 4 (User Obligations)</h2>
         <p>Users must comply with the following when using the service:</p>
@@ -44,14 +51,17 @@
         <p>Violation may result in service suspension or penalties from Discord.</p>
 
         <h2>Article 5 (Intellectual Property & Open Source License)</h2>
-        <p>The code, features, and documentation of this service are provided as open source under the Apache License 2.0.</p>
+        <p>The code, features, and documentation of this service are provided as open source under the Apache License
+            2.0.</p>
         <p>Anyone may use, modify, and distribute freely, but must include attribution and license notice.</p>
-        <p>Logos and trademarks of Discord, GitHub, Notion used in the service belong to their respective companies. This service is not an official product of those platforms.</p>
+        <p>Logos and trademarks of Discord, GitHub, Notion used in the service belong to their respective companies.
+            This service is not an official product of those platforms.</p>
 
         <h2>Article 6 (Contact)</h2>
         <p>For service-related inquiries, use one of the following. Email contact is not supported:</p>
         <ul>
-            <li>Join the Discord support server: <a href="https://discord.gg/HzAnBSCN7t">https://discord.gg/HzAnBSCN7t</a></li>
+            <li>Join the Discord support server: <a
+                    href="https://discord.gg/HzAnBSCN7t">https://discord.gg/HzAnBSCN7t</a></li>
             <li>Or send a direct message (DM) to the bot on Discord</li>
         </ul>
 
@@ -59,16 +69,20 @@
         <hr/>
         <h1>Privacy Policy</h1>
         <h2>Article 1 (Purpose)</h2>
-        <p>This policy outlines how user personal information is collected, used, and protected when using the service. The Discord bot (hereinafter “Company”) complies with applicable laws and handles personal data securely.</p>
+        <p>This policy outlines how user personal information is collected, used, and protected when using the service.
+            The Discord bot (hereinafter “Company”) complies with applicable laws and handles personal data
+            securely.</p>
 
         <h2>Article 2 (Principles of Personal Information Processing)</h2>
-        <p>The Company collects only the minimum necessary information, uses it solely for the intended purpose, and does not share it with third parties without consent.</p>
+        <p>The Company collects only the minimum necessary information, uses it solely for the intended purpose, and
+            does not share it with third parties without consent.</p>
 
         <h2>Article 3 (Disclosure of the Policy)</h2>
         <p>This policy is made publicly available via Discord commands or linked web pages at any time.</p>
 
         <h2>Article 4 (Policy Changes)</h2>
-        <p>Changes to the law or internal policy will be announced at least 7 days in advance, and important changes will be announced at least 30 days in advance.</p>
+        <p>Changes to the law or internal policy will be announced at least 7 days in advance, and important changes
+            will be announced at least 30 days in advance.</p>
 
         <h2>Article 5 (Information Collected and Methods)</h2>
         <p>The Company collects the following information within the scope provided by the Discord API:</p>
@@ -90,25 +104,31 @@
         </ul>
 
         <h2>Article 7 (Retention and Use Period)</h2>
-        <p>Collected data is deleted immediately after the purpose is achieved and is not stored long-term unless necessary. Notion tokens are deleted upon unlinking or bot removal from the server.</p>
+        <p>Collected data is deleted immediately after the purpose is achieved and is not stored long-term unless
+            necessary. Notion tokens are deleted upon unlinking or bot removal from the server.</p>
 
         <h2>Article 8 (Retention by Law)</h2>
-        <p>The Company does not collect or store consumer records or payment information required by law, so statutory retention periods do not apply.</p>
+        <p>The Company does not collect or store consumer records or payment information required by law, so statutory
+            retention periods do not apply.</p>
 
         <h2>Article 9 (Destruction of Personal Information)</h2>
-        <p>Personal information is irreversibly destroyed without delay once its purpose has been achieved or the retention period has expired.</p>
+        <p>Personal information is irreversibly destroyed without delay once its purpose has been achieved or the
+            retention period has expired.</p>
 
         <h2>Article 9-2 (Transfer Abroad)</h2>
-        <p>This service uses overseas APIs such as Discord, GitHub, and Notion. Information is transmitted only at the time of authentication and is not stored by the Company.</p>
+        <p>This service uses overseas APIs such as Discord, GitHub, and Notion. Information is transmitted only at the
+            time of authentication and is not stored by the Company.</p>
 
         <h2>Article 10 (Destruction Procedure)</h2>
-        <p>All data is stored electronically and is immediately deleted when no longer needed. Notion tokens are deleted when unlinked or the bot is removed from the server.</p>
+        <p>All data is stored electronically and is immediately deleted when no longer needed. Notion tokens are deleted
+            when unlinked or the bot is removed from the server.</p>
 
         <h2>Article 11 (Destruction Method)</h2>
         <p>Files are safely deleted using technical methods that prevent recovery.</p>
 
         <h2>Article 12 (Use of Cookies)</h2>
-        <p>Cookies may be used to provide personalized services. Users can refuse cookies through their browser settings:</p>
+        <p>Cookies may be used to provide personalized services. Users can refuse cookies through their browser
+            settings:</p>
         <ul>
             <li>Edge: Settings > Cookies and Site Permissions</li>
             <li>Chrome: Settings > Privacy and Security > Cookies</li>
@@ -122,13 +142,17 @@
         <p>The Company does not share or outsource user data to third parties.</p>
 
         <h2>Article 15 (Permissions for Notion Integration)</h2>
-        <p>Integration is done using Notion integration tokens created by users, and access is limited to the databases they specify.</p>
-        <p><strong>To ensure security, only grant read access. Do not grant edit, delete, or share permissions. The Company is not responsible for damages caused by misconfigured permissions.</strong></p>
+        <p>Integration is done using Notion integration tokens created by users, and access is limited to the databases
+            they specify.</p>
+        <p><strong>To ensure security, only grant read access. Do not grant edit, delete, or share permissions. The
+            Company is not responsible for damages caused by misconfigured permissions.</strong></p>
 
         <h2>Article 16 (Contact)</h2>
-        <p>For inquiries regarding this policy, please contact us via the official Discord support server or DM the bot directly on Discord.</p>
+        <p>For inquiries regarding this policy, please contact us via the official Discord support server or DM the bot
+            directly on Discord.</p>
         <p>📍 Support Server: <a href="https://discord.gg/HzAnBSCN7t">https://discord.gg/HzAnBSCN7t</a></p>
-        <p>No personal data is stored during inquiries, and data is not used beyond the purpose of handling your question.</p>
+        <p>No personal data is stored during inquiries, and data is not used beyond the purpose of handling your
+            question.</p>
 
         <p>Last updated: May 30, 2025</p>
     </div>

@@ -118,7 +118,7 @@ You can use **Notipy without self-hosting**. Simply invite the bot to your Disco
 
 ### ✅ Step 1. Invite the Bot
 
-* You can invite the bot from the [official website](https://notipy.code0987.com) or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609).
+* You can invite the bot from the [official website](https://notipy.code0987.com) or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify).
 * After inviting the bot, we recommend using the `/settings set-modrole` command to ensure smooth operation.
 
 <a id="commonly-used-commands"></a>

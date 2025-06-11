@@ -384,7 +384,8 @@ async def get_page_func(
     if statuscode != 200:
         print(
             f"get_page_func: {url} with headers {
-                notionHeaders(token)} -> {statuscode}")
+                notionHeaders(token)} -> {statuscode}"
+        )
         print(f"Response: {response}")
         return None
     page_cache[pageid] = response

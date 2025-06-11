@@ -114,3 +114,51 @@ label {
 a {
     color: white;
 }
+
+img.lang-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.lang-popup {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: white;
+    color: #333;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.lang-popup a {
+    display: block;
+    padding: 4px 10px;
+    color: #5865F2;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.lang-popup a:hover {
+    background-color: #f0f0f0;
+}
+
+.back-button {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    color: #f2f3f5;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 1001;
+}
+
+.back-button:hover {
+    color: #ddd;
+}
