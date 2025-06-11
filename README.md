@@ -107,7 +107,7 @@ Notipy는 **직접 서버에 설치하지 않아도** 사용할 수 있습니다
 
 ### ✅ 1단계. 봇 초대하기
 
-* [공식 홈페이지](https://notipy.code0987.com) 또는 [초대링크](https://discord.com/oauth2/authorize?client_id=955999346321686609)를 활용하여 봇을 초대할 수 있습니다.
+* [공식 홈페이지](https://notipy.code0987.com) 또는 [초대링크](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify)를 활용하여 봇을 초대할 수 있습니다.
 * 초대를 하시면 원활한 사용을 위해 `/설정 관리자역할 설정` 명령어를 사용해주세요
 
 <a id="자주-사용하는-명령어-요약"></a>
