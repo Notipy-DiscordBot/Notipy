@@ -1,332 +1,114 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notipy 디스코드 봇 소개</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', 'Noto Sans KR', sans-serif;
-      background-color: #1e1f22;
-      color: #f2f3f5;
-      overflow: hidden;
-    }
-    .dot-nav {
-      position: fixed;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-      z-index: 1000;
-    }
-    .dot-nav .dot {
-      width: 12px;
-      height: 12px;
-      background-color: #777;
-      border-radius: 50%;
-      transition: transform 0.3s, background-color 0.3s;
-      cursor: pointer;
-      padding: 6px;
-      box-sizing: content-box;
-    }
-    .dot-nav .dot.active {
-      background-color: #00b0f4;
-      transform: scale(1.6);
-    }
-    .container {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding: 20px;
-    }
-    .section {
-      position: absolute;
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-      opacity: 0;
-      transform: translateX(100vw);
-      transition: all 0.6s ease-in-out;
-      padding: 3rem 2rem;
-      background-color: #2b2d31;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-    }
-    .section.active {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .next-indicator {
-      margin-top: 2.5rem;
-      font-size: 1rem;
-      opacity: 0.6;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% { opacity: 0.3; color: #ccc; }
-      50% { opacity: 1; color: #6f7070; }
-      100% { opacity: 0.3; color: #ccc; }
-    }
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 1.2rem;
-      color: #00b0f4;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    code {
-      background-color: #383a40;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      color: #d1dbe8;
-    }
-
-    .section-image {
-      max-width: 100%;
-      height: auto;
-      margin-top: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .command-bubble-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 2rem;
-      align-items: center;
-      position: relative;
-    }
-
-    .bubble {
-      background-color: #313338;
-      border-radius: 12px;
-      padding: 12px 16px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #e3e5e8;
-      max-width: 70%;
-      position: relative;
-      transition: transform 0.3s;
-    }
-
-    /* 좌우 배치 */
-    .bubble.left {
-      align-self: flex-start;
-      border-top-left-radius: 0;
-    }
-
-    .bubble.right {
-      align-self: flex-end;
-      border-top-right-radius: 0;
-    }
-
-    /* 명령어 강조 */
-    .bubble code {
-      background-color: #2b2d31;
-      padding: 2px 6px;
-      border-radius: 6px;
-      color: #00b0f4;
-      font-weight: 600;
-    }
-
-    .back-button {
-      position: fixed;
-      left: 20px;
-      top: 20px;
-      font-size: 1.5rem;
-      color: #f2f3f5;
-      cursor: pointer;
-      transition: color 0.3s;
-      z-index: 1001;
-    }
-
-    .back-button:hover {
-      color: #ddd;
-    }
-
-  </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Notipy 디스코드 봇 소개</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/static/css/case.css"/>
 </head>
 <body>
-  <i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
-  <div class="dot-nav"></div>
-  <div class="container">
+<i class="fas fa-arrow-left back-button" onclick="location.href='index'"></i>
+<div class="dot-nav"></div>
+<div class="container">
     <div class="section active">
-      <h2>❓ 왜 디스코드를 택했나요?</h2>
-      <p>
-        Zoom, Google Meet와는 달리<br/>
-        <strong>디스코드는 시간 제한 없는 회의</strong>가 가능합니다!<br/>
-        회의 후 대화, 공지, 자료까지 <strong>지속적인 협업</strong>이 이루어지는 곳,<br/>
-        바로 <strong>디스코드</strong>이기 때문입니다.<br/>
-      </p>
-      <div class="next-indicator">클릭해서 다음 보기</div>
+        <h2>❓ 왜 디스코드를 택했나요?</h2>
+        <p>
+            Zoom, Google Meet와는 달리<br/>
+            <strong>디스코드는 시간 제한 없는 회의</strong>가 가능합니다!<br/>
+            회의 후 대화, 공지, 자료까지 <strong>지속적인 협업</strong>이 이루어지는 곳,<br/>
+            바로 <strong>디스코드</strong>이기 때문입니다.<br/>
+        </p>
+        <div class="next-indicator">클릭해서 다음 보기</div>
     </div>
 
     <div class="section">
-      <h2>🚀 그럼 이제 디스코드봇 설치 방법을 알아볼까요?</h2>
-      <p>
-        Notipy는 별도 서버 설치 없이,<br/>
-        초대만 하면 사용할 수 있는 봇입니다.
-      </p>
-      <div class="next-indicator">계속 보기</div>
+        <h2>🚀 그럼 이제 디스코드봇 설치 방법을 알아볼까요?</h2>
+        <p>
+            Notipy는 별도 서버 설치 없이,<br/>
+            초대만 하면 사용할 수 있는 봇입니다.
+        </p>
+        <div class="next-indicator">계속 보기</div>
     </div>
 
     <div class="section">
-      <h2>1️⃣ 디스코드 봇 초대하기</h2>
-      <p>홈페이지 메인화면에서 디스코드 봇 불러오기를 클릭해주세요!</p>
-    
-      <!-- ✅ 이미지 삽입 -->
-      <img src="../../static/img/invite-bot.png" alt="디스코드 초대 예시" class="section-image" />
-    
-      <div class="next-indicator">다음</div>
+        <h2>1️⃣ 디스코드 봇 초대하기</h2>
+        <p>홈페이지 메인화면에서 디스코드 봇 불러오기를 클릭해주세요!</p>
+
+        <!-- ✅ 이미지 삽입 -->
+        <img data-id="invite-bot.png" alt="디스코드 초대 예시" class="section-image"/>
+
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <h2>2️⃣ 관리자 역할 설정</h2>
-      <p>초대한 봇에게 명령어 사용을 위한 관리자 역할(NotiPy 선택)을 부여해주세요.</p>
+        <h2>2️⃣ 관리자 역할 설정</h2>
+        <p>초대한 봇에게 명령어 사용을 위한 관리자 역할(NotiPy 선택)을 부여해주세요.</p>
 
-      <!-- ✅ 이미지 삽입 -->
-      <img src="../../static/img/setting.png" alt="디스코드 초대 예시" class="section-image" />
-    
-      <div class="next-indicator">다음</div>
+        <!-- ✅ 이미지 삽입 -->
+        <img data-id="setting.png" alt="디스코드 초대 예시" class="section-image"/>
+
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <h2>3️⃣ Notion 토큰 등록</h2>
-      <p>사용자의 워크스페이스에서 Notion 토큰을 발급하고 등록합니다.</p>
-      <!-- ✅ 이미지 삽입 -->
-      <img src="../../static/img/notion-token.png" alt="디스코드 초대 예시" class="section-image" />
-    
-      <div class="next-indicator">다음</div>
+        <h2>3️⃣ Notion 토큰 등록</h2>
+        <p>사용자의 워크스페이스에서 Notion 토큰을 발급하고 등록합니다.</p>
+        <!-- ✅ 이미지 삽입 -->
+        <img data-id="notion-token.png" alt="디스코드 초대 예시" class="section-image"/>
+
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <h2>4️⃣ 데이터베이스 연동</h2>
-      <p>봇과 연결할 Notion 데이터베이스를 선택하고 채널에 연동하세요.</p>
-      <!-- ✅ 이미지 삽입 -->
-      <img src="../../static/img/notion_db.png" alt="디스코드 초대 예시" class="section-image" />
-    
-      <div class="next-indicator">다음</div>
+        <h2>4️⃣ 데이터베이스 연동</h2>
+        <p>봇과 연결할 Notion 데이터베이스를 선택하고 채널에 연동하세요.</p>
+        <!-- ✅ 이미지 삽입 -->
+        <img data-id="notion_db.png" alt="디스코드 초대 예시" class="section-image"/>
+
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <h2>5️⃣ 그 외 다양한 명령어들도 존재해요!</h2>
-      <p>NotiPy는 다양한 기능을 명령어로 제공해요. 사용해보세요!</p>
-      <div class="command-bubble-list">
-        <div class="bubble"><code>/도움말</code> 자주 쓰는 명령어를 보여줍니다.</div>
-        <div class="bubble"><code>/설정 관리자역할 설정</code> 관리자 역할을 설정합니다.</div>
-        <div class="bubble"><code>/설정 보기</code> 현재 설정을 확인합니다.</div>
-        <div class="bubble"><code>/웹훅 설정</code> 현재 채널로 웹훅을 받도록 설정합니다.</div>
-        <div class="bubble"><code>/티켓생성</code> 티켓을 생성합니다.</div>
-        <div class="bubble"><code>/핑</code> 봇의 응답 속도를 확인합니다.</div>
-      </div>
+        <h2>5️⃣ 그 외 다양한 명령어들도 존재해요!</h2>
+        <p>NotiPy는 다양한 기능을 명령어로 제공해요. 사용해보세요!</p>
+        <div class="command-bubble-list">
+            <div class="bubble"><code>/도움말</code> 자주 쓰는 명령어를 보여줍니다.</div>
+            <div class="bubble"><code>/설정 관리자역할 설정</code> 관리자 역할을 설정합니다.</div>
+            <div class="bubble"><code>/설정 보기</code> 현재 설정을 확인합니다.</div>
+            <div class="bubble"><code>/웹훅 설정</code> 현재 채널로 웹훅을 받도록 설정합니다.</div>
+            <div class="bubble"><code>/티켓생성</code> 티켓을 생성합니다.</div>
+            <div class="bubble"><code>/핑</code> 봇의 응답 속도를 확인합니다.</div>
+        </div>
 
-      <div class="next-indicator">활용법 보기</div>
+        <div class="next-indicator">활용법 보기</div>
     </div>
-
 
 
     <div class="section">
-      <h2>🎉 이제 똑똑하게 활용해볼까요?</h2>
-      <p>Notipy 봇은 단순 알림을 넘어 팀 생산성을 높일 수 있는 기능을 제공합니다.</p>
-      <div class="next-indicator">시작 명령어 보기</div>
+        <h2>🎉 이제 똑똑하게 활용해볼까요?</h2>
+        <p>Notipy 봇은 단순 알림을 넘어 팀 생산성을 높일 수 있는 기능을 제공합니다.</p>
+        <div class="next-indicator">시작 명령어 보기</div>
     </div>
 
     <div class="section">
-      <p>👉 <code>/똑똑하게 1</code></p>
-      <div class="next-indicator">다음</div>
+        <p>👉 <code>/똑똑하게 1</code></p>
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <p>👉 <code>/똑똑하게 2</code></p>
-      <div class="next-indicator">다음</div>
+        <p>👉 <code>/똑똑하게 2</code></p>
+        <div class="next-indicator">다음</div>
     </div>
 
     <div class="section">
-      <p>👉 <code>/똑똑하게 3</code></p>
-      <div class="next-indicator">처음부터 다시 보려면 왼쪽 클릭!</div>
+        <p>👉 <code>/똑똑하게 3</code></p>
+        <div class="next-indicator">처음부터 다시 보려면 왼쪽 클릭!</div>
     </div>
-  </div>
+</div>
 
-  <script>
-    const sections = document.querySelectorAll('.section');
-    const dotNav = document.querySelector('.dot-nav');
-    let current = 0;
-  
-    // dot 생성 및 클릭 이벤트 바인딩
-    sections.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', (e) => {
-        e.stopPropagation();  // 🔒 클릭 이벤트 상위로 전파되지 않도록 차단
-        const direction = i > current ? 1 : -1;
-        showSection(i, direction);
-      });
-      dotNav.appendChild(dot);
-    });
-  
-    function updateDots() {
-      document.querySelectorAll('.dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === current);
-      });
-    }
-  
-    function showSection(next, direction) {
-      if (next < 0 || next >= sections.length || next === current) return;
-      if (typeof direction !== 'number') direction = next > current ? 1 : -1;
-  
-      const currentSection = sections[current];
-      const nextSection = sections[next];
-  
-      currentSection.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
-      nextSection.style.transition = 'none';
-      nextSection.style.transform = `translateX(${100 * direction}vw)`;
-      nextSection.style.opacity = '0';
-      nextSection.classList.add('active');
-  
-      requestAnimationFrame(() => {
-        nextSection.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
-        currentSection.style.transform = `translateX(${-100 * direction}vw)`;
-        currentSection.style.opacity = '0';
-        currentSection.classList.remove('active');
-  
-        nextSection.style.transform = 'translateX(0)';
-        nextSection.style.opacity = '1';
-      });
-  
-      current = next;
-      updateDots();
-    }
-  
-    // ✅ dot-nav 제외 영역에서만 페이지 전환 가능
-    document.body.addEventListener('click', (e) => {
-      // dot-nav 영역 내 클릭이면 무시
-      if (e.target.closest('.dot-nav')) return;
-  
-      const x = e.clientX;
-      const middle = window.innerWidth*0.4;
-      if (x < middle) {
-        showSection(current - 1, -1);
-      } else {
-        showSection(current + 1, 1);
-      }
-    });
-  </script>
-  
+<script src="/static/js/case.js"></script>
 
 </body>
 </html>
