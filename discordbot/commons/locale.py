@@ -26,6 +26,7 @@ for file in listdir(wd + "/localization"):
         with open(join(wd + "/localization", file), "r", encoding="utf-8") as f:
             locales[file[:-5]] = json.load(f)
 
+
 def localize(server_only: bool = True):
     def decorator(func):
         @wraps(func)
@@ -72,7 +73,9 @@ def getname(name) -> LocalisedName:
     names = {}
     for locale in locales:
         if name in locales[locale]:
-            names[language_codes[locale]] = locales[locale][name].lower().replace(" ", "_")
+            names[language_codes[locale]] = (
+                locales[locale][name].lower().replace(" ", "_")
+            )
     if language_codes[default_locale] not in names:
         names[language_codes[default_locale]] = name
     return LocalisedName(**names)
