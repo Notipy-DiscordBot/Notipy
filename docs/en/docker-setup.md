@@ -5,6 +5,10 @@ For the process of creating a Discord bot, refer
 to [Discord-py-Interactions](https://interactions-py.github.io/interactions.py/Guides/), and for creating a Notion app,
 refer to the [Notion Developer Page](https://developers.notion.com/docs/getting-started).
 
+## 📂 Directory Structure
+![a](/resources/dirstructure.png)
+
+## 🚀 Setting Up and Running Guide
 ### 1. Create a `.env` file
 
 A `var.env.example` file is provided by default.  

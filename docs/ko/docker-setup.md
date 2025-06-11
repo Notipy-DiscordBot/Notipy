@@ -4,6 +4,10 @@
 디스코드 봇을 생성하는 과정은 [Discord-py-Interactions](https://interactions-py.github.io/interactions.py/Guides/)에서, 노션 앱
 생성은 [노션 개발자 페이지](https://developers.notion.com/docs/getting-started)를 참고해주세요.
 
+## 📂 디렉토리 구조
+![a](/resources/dirstructure.png)
+
+## 🚀 설정 및 실행 가이드
 ### 1. `.env` 파일 생성
 
 현재 기본적으로 `var.env.example` 파일이 제공되어 있습니다.    
@@ -11,20 +15,20 @@
 
 ✅ **수정이 반드시 필요한 값들**
 
-| 항목 | 설명 |
-| -------------------- | ------------------------------------------------------------------------- |
-| `GITHUB_TOKEN`       | GitHub Personal Access Token |
-| `DISCORD_TOKEN`      | Discord 봇 토큰 |
-| `DISCORD_CLIENT_ID`  | Discord 애플리케이션 클라이언트 ID |
-| `DISCORD_SECRET`     | Discord 애플리케이션 클라이언트 Secret |
+| 항목 | 설명                                                                        |
+| -------------------- |---------------------------------------------------------------------------|
+| `GITHUB_TOKEN`       | GitHub Personal Access Token                                              |
+| `DISCORD_TOKEN`      | Discord 봇 토큰                                                              |
+| `DISCORD_CLIENT_ID`  | Discord 애플리케이션 클라이언트 ID                                                   |
+| `DISCORD_SECRET`     | Discord 애플리케이션 클라이언트 Secret                                               |
 | `DISCORD_DEVSERVER`  | 테스트용 Discord 서버 ID (예: `123456789012345678`)                              |
 | `DISCORD_DEVELOPERS` | Discord 개발자 ID들, 쉼표로 구분 (예: `123,456,789`)                                |
 | `DISCORD_OAUTH2_URL` | Discord OAuth2 인증 URL (예: `https://discord.com/api/oauth2/authorize?...`) |
 | `REDIRECT_URI`       | OAuth2 인증 후 리디렉션될 URI (예: `https://yourdomain.com/discord/redirect`)      |
-| `NOTION_TOKEN`       | Notion integration 토큰 |
-| `MYSQL_USER`         | MySQL 사용자 이름 |
-| `MYSQL_PASSWORD`     | MySQL 비밀번호 |
-| `MYSQL_DATABASE`     | 사용할 MySQL 데이터베이스 이름 |
+| `NOTION_TOKEN`       | Notion integration 토큰                                                     |
+| `MYSQL_USER`         | MySQL ㅣㄴ사용자 이름                                                            |
+| `MYSQL_PASSWORD`     | MySQL 비밀번호                                                                |
+| `MYSQL_DATABASE`     | 사용할 MySQL 데이터베이스 이름                                                       |
 
 🟡 **선택적으로 수정 가능한 값들**
 
