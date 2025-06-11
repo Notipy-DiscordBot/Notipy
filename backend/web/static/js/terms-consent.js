@@ -43,7 +43,7 @@ agreeButton.onclick = () => {
         "discordOAuth",
         `width=${width},height=${height},top=${top},left=${left}`
     );
-    
+
     if (!popup) {
         alert("팝업 차단을 해제해주세요!");
     }
