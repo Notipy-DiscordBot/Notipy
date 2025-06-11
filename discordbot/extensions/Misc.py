@@ -54,7 +54,7 @@ class Misc(Extension):
         """
         send channel from dm to support discord forum channel
         """
-        print(dmCache.items())
+        # print(dmCache.items())
         message = event.message
         channel = message.channel
         channelid = int(channel.id)

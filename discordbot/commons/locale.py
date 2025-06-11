@@ -40,7 +40,7 @@ def localize(server_only: bool = True):
 
             locale = ctx.locale
             if locale not in locales:
-                locale = ctx.guild.preferred_locale if ctx.guild else "en"
+                locale = ctx.guild.preferred_locale if ctx.guild else default_locale
             return await func(self, ctx, localizator(locale), *args, **kwargs)
 
         return wrapped_func
@@ -73,8 +73,10 @@ def getname(name) -> LocalisedName:
     names = {}
     for locale in locales:
         if name in locales[locale]:
-            names[language_codes[locale]] = locales[locale][name]
-    if default_locale not in names:
+            names[language_codes[locale]] = (
+                locales[locale][name].lower().replace(" ", "_")
+            )
+    if language_codes[default_locale] not in names:
         names[language_codes[default_locale]] = name
     return LocalisedName(**names)
 
@@ -85,6 +87,6 @@ def getdesc(name) -> LocalisedDesc:
     for locale in locales:
         if name in locales[locale]:
             descs[language_codes[locale]] = locales[locale][name]
-    if default_locale not in descs:
+    if language_codes[default_locale] not in descs:
         descs[language_codes[default_locale]] = name
     return LocalisedDesc(**descs)
