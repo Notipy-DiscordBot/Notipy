@@ -33,12 +33,13 @@ This page was translated with the help of ChatGPT. Some elements may not perfect
 </p>
 
 ## Table of Contents
+
 - [Key Features](#key-features)
-  - [Notion](#notion)
-  - [Database Integration](#database-integration)
-  - [GitHub Profile Analysis and Summary](#github-profile-analysis-and-summary)
-  - [Project Creation and Management](#project-creation-and-management)
-  - [Internal Request Validation and Security](#internal-request-validation-and-security)
+    - [Notion](#notion)
+    - [Database Integration](#database-integration)
+    - [GitHub Profile Analysis and Summary](#github-profile-analysis-and-summary)
+    - [Project Creation and Management](#project-creation-and-management)
+    - [Internal Request Validation and Security](#internal-request-validation-and-security)
 - [Getting Started as a User](#getting-started-as-a-user)
 - [Commonly Used Commands](#commonly-used-commands)
 - [Running with Docker](#running-with-docker)
@@ -48,12 +49,17 @@ This page was translated with the help of ChatGPT. Some elements may not perfect
 - [License](#license)
 
 <a id="this-project-is-currently-under-development"></a>
+
 ## 🚧 This project is currently under development!
 
-Notipy is a Python-based Discord bot that monitors a Notion database and sends notifications to a Discord channel when specific conditions are met.
-It can be used as a real-time alert tool in various collaboration scenarios, such as scheduling, task management, and issue tracking.
-It is structured using a FastAPI-based backend server and SQLAlchemy ORM, supporting seamless integration with the Notion API and Discord interaction system.
-**Note: As this project is under active development, some services may be unstable or temporarily unavailable without prior notice.**
+Notipy is a Python-based Discord bot that monitors a Notion database and sends notifications to a Discord channel when
+specific conditions are met.
+It can be used as a real-time alert tool in various collaboration scenarios, such as scheduling, task management, and
+issue tracking.
+It is structured using a FastAPI-based backend server and SQLAlchemy ORM, supporting seamless integration with the
+Notion API and Discord interaction system.
+**Note: As this project is under active development, some services may be unstable or temporarily unavailable without
+prior notice.**
 <a id="key-features"></a>
 
 ## ✨ Key Features
@@ -61,13 +67,15 @@ It is structured using a FastAPI-based backend server and SQLAlchemy ORM, suppor
 ### Notion
 
 * Users must individually create a Notion Integration for their own workspace and provide its token directly.
-* This token only grants access to events within the user's workspace and is never transmitted outside the server or shared.
+* This token only grants access to events within the user's workspace and is never transmitted outside the server or
+  shared.
 
 #### 📌 Webhook Reception and Processing
 
-* Receives events such as page creation, updates, and deletion via webhook and relays this information to the Discord channel.
+* Receives events such as page creation, updates, and deletion via webhook and relays this information to the Discord
+  channel.
 * Supports creating threads in forum channels or updating existing messages.
-<a id="database-integration"></a>
+  <a id="database-integration"></a>
 * Stores linkage data between Notion pages and Discord threads in the database to maintain persistent alert tracking.
 
 ### 🗃️ Database Integration
@@ -78,20 +86,25 @@ It is structured using a FastAPI-based backend server and SQLAlchemy ORM, suppor
 
 #### 🔎 Why must users provide their own Notion token?
 
-* **Access Control**: By creating the integration themselves, users can **explicitly control which workspaces or databases the bot can access**.
-* **Flexible Webhook Configuration**: Users can **manually configure desired events** (e.g., page creation/updates) within Notion.
-* **Security and Data Isolation**: Since each token is tied to a user's workspace only, it ensures isolated and secure integration.
+* **Access Control**: By creating the integration themselves, users can **explicitly control which workspaces or
+  databases the bot can access**.
+* **Flexible Webhook Configuration**: Users can **manually configure desired events** (e.g., page creation/updates)
+  within Notion.
+* **Security and Data Isolation**: Since each token is tied to a user's workspace only, it ensures isolated and secure
+  integration.
 
 📖 **Notion Token Setup Guide:**
 👉 [How to create a Notion Integration and get the token](https://developers.notion.com/docs/create-a-notion-integration)
 
 <a id="github-profile-analysis-and-summary"></a>
+
 ### 🧠 GitHub Profile Analysis and Summary
 
 * Collects GitHub profile data based on user-provided URLs and summarizes key information using LLM.
 * Summaries can be accessed by other users on Discord if permission is granted.
 
 <a id="project-creation-and-management"></a>
+
 ### 🛠️ Project Creation and Management
 
 * Users can create new projects via Discord commands or interaction.
@@ -99,10 +112,12 @@ It is structured using a FastAPI-based backend server and SQLAlchemy ORM, suppor
 * Each project has metadata like title, description, and category, and can be easily edited through the Discord UI.
 
 <a id="internal-request-validation-and-security"></a>
+
 ### 🔒 Internal Request Validation and Security
 
 All internal API requests are validated via the `X-Internal-Request` header in FastAPI.
-This header is automatically set to `false` by Nginx for external requests, while only internal Docker network requests may bypass or set it to `true`.
+This header is automatically set to `false` by Nginx for external requests, while only internal Docker network requests
+may bypass or set it to `true`.
 
 * External requests → `X-Internal-Request: false` (forced by Nginx)
 * Internal Docker communication → Direct access or set to `true`
@@ -112,40 +127,48 @@ This prevents external actors from spoofing internal API calls.
 ---
 
 <a id="getting-started-as-a-user"></a>
+
 ## 🧭 Getting Started as a User
 
-You can use **Notipy without self-hosting**. Simply invite the bot to your Discord server and start using its features immediately. Here's a quick guide:
+You can use **Notipy without self-hosting**. Simply invite the bot to your Discord server and start using its features
+immediately. Here's a quick guide:
 
 ### ✅ Step 1. Invite the Bot
 
-* You can invite the bot from the [official website](https://notipy.code0987.com) or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609).
+* You can invite the bot from the [official website](https://notipy.code0987.com) or directly via
+  this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify).
 * After inviting the bot, we recommend using the `/settings set-modrole` command to ensure smooth operation.
 
 <a id="commonly-used-commands"></a>
+
 ## 📋 Commonly Used Commands
 
-| Command                        | Description                                   |
-| ----------------------------- | --------------------------------------------- |
-| `/settings view`              | View the current settings for the server      |
-| `/notion notiontoken set`           | Register your Notion integration token        |
-| `/notion database connect`          | Connect a Notion database to a channel        |
-| `/notion database view`             | View the list of connected databases          |
-| `/notion notiontoken remove`        | Disconnect your Notion integration            |
-| `/create-ticket`              | Create a support ticket within Discord        |
-| `/github link`                | Link your GitHub account                      |
-| `/create-project`             | Create and manage a collaborative project     |
+| Command                      | Description                               |
+|------------------------------|-------------------------------------------|
+| `/settings view`             | View the current settings for the server  |
+| `/notion notiontoken set`    | Register your Notion integration token    |
+| `/notion database connect`   | Connect a Notion database to a channel    |
+| `/notion database view`      | View the list of connected databases      |
+| `/notion notiontoken remove` | Disconnect your Notion integration        |
+| `/create-ticket`             | Create a support ticket within Discord    |
+| `/github link`               | Link your GitHub account                  |
+| `/create-project`            | Create and manage a collaborative project |
 
-If you want to configure the environment and host the bot yourself, refer to the section below titled “Running with Docker”.
+If you want to configure the environment and host the bot yourself, refer to the section below titled “Running with
+Docker”.
 
 
 ---
 
 <a id="running-with-docker"></a>
+
 ## 🐳 Running with Docker
 
 `Dockerfile` and `docker-compose.yml` are provided for easy deployment in a Docker environment.  
-To create a Discord bot, please refer to the [Discord-py-Interactions Guide](https://interactions-py.github.io/interactions.py/Guides/).  
-To create a Notion integration, please refer to the [Notion Developer Documentation](https://developers.notion.com/docs/getting-started).
+To create a Discord bot, please refer to
+the [Discord-py-Interactions Guide](https://interactions-py.github.io/interactions.py/Guides/).  
+To create a Notion integration, please refer to
+the [Notion Developer Documentation](https://developers.notion.com/docs/getting-started).
 
 ### 1. Create a `.env` File
 
@@ -155,7 +178,7 @@ Duplicate it to the root directory as `.env` and fill in the following:
 ✅ **Required Settings**
 
 | Variable             | Description                                                     |
-| -------------------- | --------------------------------------------------------------- |
+|----------------------|-----------------------------------------------------------------|
 | `GITHUB_TOKEN`       | GitHub Personal Access Token                                    |
 | `DISCORD_TOKEN`      | Discord bot token                                               |
 | `DISCORD_CLIENT_ID`  | Discord application client ID                                   |
@@ -172,7 +195,7 @@ Duplicate it to the root directory as `.env` and fill in the following:
 🟡 **Optional Settings**
 
 | Variable             | Description                            |
-| -------------------- | -------------------------------------- |
+|----------------------|----------------------------------------|
 | `DISCORD_DEBUG_FILE` | Debug log path (default: `debug.log`)  |
 | `DISCORD_ERROR_LOG`  | Error log path (default: `error.log`)  |
 | `DISCORD_PORT`       | Discord service port (default: `9090`) |
@@ -190,7 +213,7 @@ docker network create notipy_backend
 ### 3. Configure Docker-Compose
 
 | Location                        | Field                       | Description                                                        |
-| ------------------------------- | --------------------------- | ------------------------------------------------------------------ |
+|---------------------------------|-----------------------------|--------------------------------------------------------------------|
 | `discordbot` → `container_name` | `notipy-discordbot`         | Optional: renaming changes network access URLs, so not recommended |
 | `discordbot` → `DEBUG`          | Enables debug mode          | Exits all servers except dev server and forcibly syncs commands    |
 | `backend` → `container_name`    | `notipy-backend`            | Optional renaming possible                                         |
@@ -214,6 +237,7 @@ docker compose up database backend discordbot -d
 ---
 
 <a id="contributing"></a>
+
 ## 🤝 Contributing
 
 Notipy is an open-source project — contributions are welcome!
@@ -225,16 +249,17 @@ Notipy is an open-source project — contributions are welcome!
 3. Add features or fix bugs.
 4. Create a Pull Request:
 
-   * Title format: `[Feature] Feature name` or `[Bug] Bug description`
-   * Describe your changes, related issues, and how to test them.
-   * PRs should target the `dev/main` branch.
+    * Title format: `[Feature] Feature name` or `[Bug] Bug description`
+    * Describe your changes, related issues, and how to test them.
+    * PRs should target the `dev/main` branch.
 5. Include a PR template if possible.
 
-   * Code formatting is handled automatically.
+    * Code formatting is handled automatically.
 
 ---
 
 <a id="community"></a>
+
 ## 🧑‍🤝‍🧑 Community
 
 You can get announcements and support through the following:
@@ -245,14 +270,18 @@ You can get announcements and support through the following:
 * GitHub repository: [Notipy-DiscordBot/Notipy](https://github.com/Notipy-DiscordBot/Notipy)
 
 <a id="terms-of-service-and-privacy-policy"></a>
+
 ## 📃 Terms of Service and Privacy Policy
+
 You can read the full terms and privacy policy within this repository.
+
 - [English version](terms-policy.md)
 - [Korean version](../ko/terms-policy.md)
 
 ---
 
 <a id="license"></a>
+
 ## License
 
 This project is licensed under the Apache 2.0 License.
