@@ -116,10 +116,32 @@ This prevents external actors from spoofing internal API calls.
 
 You can use **Notipy without self-hosting**. Simply invite the bot to your Discord server and start using its features immediately. Here's a quick guide:
 
+<a id="getting-started-as-user"></a>
+
+## 🧭 Getting Started as a User
+
+Notipy **does not require any server installation**. You can simply invite the bot to your Discord server and start using it right away. Below are the basic steps to get started:
+
 ### ✅ Step 1. Invite the Bot
 
-* You can invite the bot from the [official website](https://notipy.code0987.com) or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify).
-* After inviting the bot, we recommend using the `/settings set-modrole` command to ensure smooth operation.
+* You can invite the bot through the [official website](https://notipy.code0987.com)
+  or directly via this [invite link](https://discord.com/oauth2/authorize?client_id=955999346321686609&permissions=8&response_type=code&redirect_uri=https%3A%2F%2Fnotipy.code0987.com%2Foauth-popup&integration_type=0&scope=bot+identify).
+  ![a](/web/static/img/en/invite-bot.png)
+
+* After inviting, use the `/setup set-admin-role` command to configure admin access.
+    - This ensures only users with the specified role can change bot settings.
+      ![a](/web/static/img/en/setting.png)
+
+### ✅ Step 2. Configure Notion Integration
+
+* Use the `/notion set-token` command to register your Notion integration token.
+    - You can create the token on the [Notion developer page](https://www.notion.so/my-integrations).
+    - Once registered, the bot can access the corresponding Notion workspace.
+      ![a](/web/static/img/en/notion-token.png)
+
+* Use the `/notion connect-database` command to link your Notion database to a Discord channel.
+    - During this process, you'll select which database to monitor and which channel to send notifications to.
+      ![a](/web/static/img/en/notion_db.png)
 
 <a id="commonly-used-commands"></a>
 ## 📋 Commonly Used Commands
@@ -144,72 +166,7 @@ If you want to configure the environment and host the bot yourself, refer to the
 ## 🐳 Running with Docker
 
 `Dockerfile` and `docker-compose.yml` are provided for easy deployment in a Docker environment.  
-To create a Discord bot, please refer to the [Discord-py-Interactions Guide](https://interactions-py.github.io/interactions.py/Guides/).  
-To create a Notion integration, please refer to the [Notion Developer Documentation](https://developers.notion.com/docs/getting-started).
-
-### 1. Create a `.env` File
-
-A sample `var.env.example` file is provided.
-Duplicate it to the root directory as `.env` and fill in the following:
-
-✅ **Required Settings**
-
-| Variable             | Description                                                     |
-| -------------------- | --------------------------------------------------------------- |
-| `GITHUB_TOKEN`       | GitHub Personal Access Token                                    |
-| `DISCORD_TOKEN`      | Discord bot token                                               |
-| `DISCORD_CLIENT_ID`  | Discord application client ID                                   |
-| `DISCORD_SECRET`     | Discord application client secret                               |
-| `DISCORD_DEVSERVER`  | Development Discord server ID (e.g., `123456789012345678`)      |
-| `DISCORD_DEVELOPERS` | Developer user IDs (comma-separated, e.g., `123,456,789`)       |
-| `DISCORD_OAUTH2_URL` | Discord OAuth2 URL (e.g., `https://discord.com/api/oauth2/...`) |
-| `REDIRECT_URI`       | Redirect URI after OAuth2 (e.g., `https://yourdomain.com/...`)  |
-| `NOTION_TOKEN`       | Notion integration token                                        |
-| `MYSQL_USER`         | MySQL username                                                  |
-| `MYSQL_PASSWORD`     | MySQL password                                                  |
-| `MYSQL_DATABASE`     | MySQL database name                                             |
-
-🟡 **Optional Settings**
-
-| Variable             | Description                            |
-| -------------------- | -------------------------------------- |
-| `DISCORD_DEBUG_FILE` | Debug log path (default: `debug.log`)  |
-| `DISCORD_ERROR_LOG`  | Error log path (default: `error.log`)  |
-| `DISCORD_PORT`       | Discord service port (default: `9090`) |
-| `BACKEND_PORT`       | Backend service port (default: `9091`) |
-| `MYSQL_TCP_PORT`     | MySQL port (default: `3306`)           |
-
-### 2. Build Docker Image & Create Networks
-
-```bash
-docker build -t notipy .
-docker network create nginx-proxy
-docker network create notipy_backend
-```
-
-### 3. Configure Docker-Compose
-
-| Location                        | Field                       | Description                                                        |
-| ------------------------------- | --------------------------- | ------------------------------------------------------------------ |
-| `discordbot` → `container_name` | `notipy-discordbot`         | Optional: renaming changes network access URLs, so not recommended |
-| `discordbot` → `DEBUG`          | Enables debug mode          | Exits all servers except dev server and forcibly syncs commands    |
-| `backend` → `container_name`    | `notipy-backend`            | Optional renaming possible                                         |
-| `database` → `volumes`          | `./database:/var/lib/mysql` | Keeps volume data persistent                                       |
-| `networks`                      | Must match names            | Should match networks created in step 2                            |
-
-Ensure all port numbers match those in your `.env` file.
-
-### 4. Run Docker Containers
-
-```bash
-docker compose up -d
-```
-
-If not using nginx or Ollama, you may run only selected containers:
-
-```bash
-docker compose up database backend discordbot -d
-```
+Please refer to the [Setup Guide](docker-setup.md) for the process.
 
 ---
 
