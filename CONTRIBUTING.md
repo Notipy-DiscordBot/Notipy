@@ -21,6 +21,7 @@ Notipy 프로젝트에 기여해주셔서 감사합니다!
 2. 의존성 설치 및 `.env` 구성:
 
    * `.env.example`을 복사하여 `.env` 파일을 생성하고, 필요한 설정을 입력해주세요.
+   * 자세한 설정법은 [직접 실행하기 위키 페이지](https://github.com/Notipy-DiscordBot/Notipy/wiki/직접-실행하기)에서 확인할 수 있습니다.
    * 로컬 실행 또는 Docker Compose를 통해 빠르게 실행할 수 있습니다.
 
 3. Docker 실행 예시:
